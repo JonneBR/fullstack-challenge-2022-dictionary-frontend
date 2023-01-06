@@ -1,0 +1,23 @@
+{
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "globals": {
+    "React": "readonly"
+  },
+  "rules": {
+    "indent": ["error", 2],
+    "no-redeclare": "off",
+    //Fix this line bellow in future opportunities
+    "@typescript-eslint/no-namespace": "off"
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "root": true,
+  "env": {
+    "jest": true
+  }
+}
