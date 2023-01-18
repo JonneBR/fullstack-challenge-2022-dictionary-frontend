@@ -28,7 +28,7 @@
 .description p {
   position: relative;
   margin: 0;
-  padding: 1rem;
+  padding: 10rem 200px;
   background-color: rgba(var(--callout-rgb), 0.5);
   border: 1px solid rgba(var(--callout-border-rgb), 0.3);
   border-radius: var(--border-radius);
@@ -220,6 +220,8 @@
   }
 
   .description p {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     inset: 0 0 auto;
     padding: 2rem 1rem 1.4rem;

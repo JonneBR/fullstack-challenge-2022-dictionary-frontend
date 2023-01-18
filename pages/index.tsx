@@ -1,11 +1,20 @@
 import { Inter } from '@next/font/google'
+import axios from 'axios'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const fetchData = async () => {
+    return await axios('http://localhost:3000/api/hello')
+  }
+  useEffect(() => {
+    fetchData().then((response) => console.log(response))
+  }, [])
+
   return (
     <>
       <Head>
@@ -17,8 +26,10 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.description}>
           <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.tsx</code>
+            <h2>hello</h2>
+            <h3 style={{ fontWeight: 'normal', marginTop: '1rem' }}>həˈləʊ</h3>
+            {/* Get started by editing&nbsp;
+            <code className={styles.code}>pages/index.tsx</code> */}
           </p>
           <div>
             <a
