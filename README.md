@@ -8,15 +8,42 @@ Frontend(current) - [Fullstack Challenge 🏅 2022 - Dictionary - Frontend](http
 
 Backend - [Fullstack Challenge 🏅 2022 - Dictionary - Backend](https://github.com/JonneBR/fullstack-challenge-2022-dictionary-backend)
 
-## Overview
+## Getting Started
 
-> ## Architecture
+### Prerequisites
+
+- yarn >=1.22.17
+- node >=16.0.0
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/JonneBR/fullstack-challenge-2022-dictionary-backend
+   ```
+2. Install packages
+   ```sh
+   yarn
+   ```
+3. Run tests
+   ```sh
+   yarn test
+   ```
+4. Run the app locally
+   ```sh
+   yarn dev
+   ```
+
+## API Overview
+
+## Architecture
+
+![alt clean architecture](/public/img/clean-architecture.png)
 
 > ## Project Objectives
 
 **First**
 
-- Como usuário, devo ser capaz de realizar login com usuário e senha
 - Como usuário, devo ser capaz de visualizar uma lista de palavras com rolagem infinita
 - Como usuário, devo ser capaz de visualizar uma palavra, significados e a fonética
 - Como usuário, devo ser capaz de salvar a palavra como favorito
