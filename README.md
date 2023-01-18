@@ -19,7 +19,7 @@ Backend - [Fullstack Challenge 🏅 2022 - Dictionary - Backend](https://github.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/JonneBR/fullstack-challenge-2022-dictionary-backend
+   git clone https://github.com/JonneBR/fullstack-challenge-2022-dictionary-frontend
    ```
 2. Install packages
    ```sh
@@ -32,6 +32,10 @@ Backend - [Fullstack Challenge 🏅 2022 - Dictionary - Backend](https://github.
 4. Run the app locally
    ```sh
    yarn dev
+   ```
+5. Go to
+   ```sh
+   http://localhost:3000
    ```
 
 ## API Overview
