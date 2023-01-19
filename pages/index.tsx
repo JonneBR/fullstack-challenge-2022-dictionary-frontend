@@ -8,6 +8,7 @@ import { Inter } from '@next/font/google'
 import axios from 'axios'
 import Head from 'next/head'
 import { useEffect } from 'react'
+import Tab from '../src/components/tab/Tab'
 import styles from '../styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -56,7 +57,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className={styles['tab-container']}></div>
+        <div className={styles['tab-container']}>
+          <Tab />
+        </div>
         {/* <div className={styles.description}> */}
 
         {/* <div>
