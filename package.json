@@ -13,6 +13,7 @@
     "pre-commit": "yarn lint --fix"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.0.0",
     "antd": "^5.1.5",
     "axios": "^1.2.3",
     "next": "13.0.7",

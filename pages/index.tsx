@@ -1,3 +1,9 @@
+import { StepForwardOutlined } from '@ant-design/icons'
+import {
+  LeftOutlined,
+  PauseOutlined,
+  RightOutlined,
+} from '@ant-design/icons/lib/icons'
 import { Inter } from '@next/font/google'
 import axios from 'axios'
 import Head from 'next/head'
@@ -35,6 +41,11 @@ export default function Home() {
                 həˈləʊ
               </h3>
             </div>
+            <StepForwardOutlined style={{ fontSize: '2rem' }} />
+            <PauseOutlined style={{ fontSize: '2rem' }} />
+            <RightOutlined style={{ fontSize: '2rem' }} />
+            <LeftOutlined style={{ fontSize: '2rem' }} />
+
             <div className={styles['container-word-meanings']}>
               <br />
               <br />
