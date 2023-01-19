@@ -3,11 +3,9 @@ import {
   StarOutlined,
   UnorderedListOutlined,
 } from '@ant-design/icons'
-import { Col, Row, Tabs, Typography } from 'antd'
+import { Badge, Col, Row, Tabs } from 'antd'
 import words from '../../../word-list.json'
 import styles from './Tab.module.css'
-
-const { Title, Text } = Typography
 
 export default function Tab() {
   console.log(Object.keys(words).indexOf('abasgi'))
@@ -52,7 +50,7 @@ export default function Tab() {
           label: (
             <span>
               <StarOutlined />
-              Favorites
+              <Badge dot={true}>Favorites</Badge>
             </span>
           ),
           key: '2',
