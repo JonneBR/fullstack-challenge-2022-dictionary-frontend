@@ -2,29 +2,57 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;
   padding: 6rem;
   min-height: 100vh;
 }
 
 .dictionary-container {
   display: inherit;
-  justify-content: inherit;
-  align-items: inherit;
+  flex-direction: column;
+  align-items: center;
   font-size: 0.85rem;
   max-width: var(--max-width);
-  width: 100%;
+  width: 500px;
   z-index: 2;
   font-family: var(--font-mono);
 }
 
-.dictionary-container > div {
+.container-wrapper {
+  width: 100%;
+}
+
+.container-word-phonetic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
   margin: 0;
-  padding: 7rem 200px;
+  padding: 7rem;
+  width: 100%;
   background-color: rgba(var(--callout-rgb), 0.5);
   border: 1px solid rgba(var(--callout-border-rgb), 0.3);
   border-radius: var(--border-radius);
+
+  /* border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
+    background: linear-gradient(
+      to bottom,
+      rgba(var(--background-start-rgb), 1),
+      rgba(var(--callout-rgb), 0.5)
+    );
+    background-clip: padding-box;
+    backdrop-filter: blur(24px); */
+}
+
+.container-word-meanings {
+  margin: 0;
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+.container-word-meanings > p {
+  font-size: 0.95rem;
+  margin-top: 2.5rem;
 }
 
 .tab-container {
@@ -49,12 +77,8 @@
     padding: 4rem;
   }
 
-  .dictionary-container > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 7rem 160px;
+  .dictionary-container {
+    width: 100%;
   }
 }
 
@@ -69,13 +93,6 @@
   z-index: 2;
   font-family: var(--font-mono);
 }
-
-/* .description a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-} */
 
 .description > div {
   position: relative;
@@ -102,7 +119,6 @@
     justify-content: center;
     position: fixed;
     width: 100%;
-    border: 1px solid orange;
   }
 
   .description > div {

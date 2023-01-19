@@ -24,15 +24,25 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles['dictionary-container']}>
-          <div className={styles['container-word-phonetic']}>
-            <h2>hello</h2>
-            <h3
-              style={{
-                fontWeight: 'normal',
-              }}
-            >
-              həˈləʊ
-            </h3>
+          <div className={styles['container-wrapper']}>
+            <div className={styles['container-word-phonetic']}>
+              <h2>hello</h2>
+              <h3
+                style={{
+                  fontWeight: 'normal',
+                }}
+              >
+                həˈləʊ
+              </h3>
+            </div>
+            <div className={styles['container-word-meanings']}>
+              <br />
+              <br />
+              <br />
+              <br />
+              <h1>Meanings</h1>
+              <p>Verb - Hello! or an equivalente greeting</p>
+            </div>
           </div>
         </div>
         <div className={styles['tab-container']}></div>
