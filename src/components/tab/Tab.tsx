@@ -4,11 +4,13 @@ import {
   UnorderedListOutlined,
 } from '@ant-design/icons'
 import { Col, Row, Tabs, Typography } from 'antd'
+import words from '../../../word-list.json'
 import styles from './Tab.module.css'
 
 const { Title, Text } = Typography
 
 export default function Tab() {
+  console.log(Object.keys(words).indexOf('abasgi'))
   return (
     <Tabs
       style={{ width: '100%' }}
@@ -22,40 +24,29 @@ export default function Tab() {
             </span>
           ),
           key: '1',
-          children: [1].map((element) => {
-            return (
-              <div key={element}>
-                <Row gutter={[16, 24]}>
-                  <Col className='gutter-row' span={6}>
-                    <div className={styles['gutter-box']}>Airplane</div>
-                  </Col>
-                  <Col className='gutter-row' span={6}>
-                    <div className={styles['gutter-box']}>Box</div>
-                  </Col>
-                  <Col className='gutter-row' span={6}>
-                    <div className={styles['gutter-box']}>Word</div>
-                  </Col>
-                  <Col className='gutter-row' span={6}>
-                    <div className={styles['gutter-box']}>Programming</div>
-                  </Col>
-                </Row>
-                <Row gutter={[16, 24]}>
-                  <Col className='gutter-row' span={6}>
-                    <div className={styles['gutter-box']}>Airplane</div>
-                  </Col>
-                  <Col className='gutter-row' span={6}>
-                    <div className={styles['gutter-box']}>Box</div>
-                  </Col>
-                  <Col className='gutter-row' span={6}>
-                    <div className={styles['gutter-box']}>Word</div>
-                  </Col>
-                  <Col className='gutter-row' span={6}>
-                    <div className={styles['gutter-box']}>Programming</div>
-                  </Col>
-                </Row>
-              </div>
-            )
-          }),
+          children: (
+            <>
+              <Row>
+                {Object.keys(words).map((element) => {
+                  return (
+                    <Col className='gutter-row' span={6} key={element}>
+                      <div className={styles['gutter-box']}>{element}</div>
+                    </Col>
+                  )
+                })}
+
+                {/* <Col className='gutter-row' span={6}>
+                        <div className={styles['gutter-box']}>Box</div>
+                      </Col>
+                      <Col className='gutter-row' span={6}>
+                        <div className={styles['gutter-box']}>Word</div>
+                      </Col>
+                      <Col className='gutter-row' span={6}>
+                        <div className={styles['gutter-box']}>Programming</div>
+                      </Col> */}
+              </Row>
+            </>
+          ),
         },
         {
           label: (
