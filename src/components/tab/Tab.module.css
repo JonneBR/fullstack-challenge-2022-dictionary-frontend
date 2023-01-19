@@ -1,0 +1,10 @@
+.list-row {
+  padding: 15px;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+  transition: background-color 0.5s ease-in-out;
+}
+.list-row:hover {
+  background-color: #c5e3ff;
+}

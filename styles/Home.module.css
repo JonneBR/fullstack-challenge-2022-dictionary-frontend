@@ -58,7 +58,6 @@
 .tab-container {
   display: inherit;
   justify-content: inherit;
-  border: 1px solid blue;
   align-items: inherit;
   font-size: 0.85rem;
   max-width: var(--max-width);
