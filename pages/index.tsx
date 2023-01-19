@@ -1,7 +1,6 @@
 import { Inter } from '@next/font/google'
 import axios from 'axios'
 import Head from 'next/head'
-import Image from 'next/image'
 import { useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 
@@ -28,10 +27,8 @@ export default function Home() {
           <p>
             <h2>hello</h2>
             <h3 style={{ fontWeight: 'normal', marginTop: '1rem' }}>həˈləʊ</h3>
-            {/* Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.tsx</code> */}
           </p>
-          <div>
+          {/* <div>
             <a
               href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
               target='_blank'
@@ -47,10 +44,10 @@ export default function Home() {
                 priority
               />
             </a>
-          </div>
+          </div> */}
         </div>
 
-        <div className={styles.center}>
+        {/* <div className={styles.center}>
           <Image
             className={styles.logo}
             src='/next.svg'
@@ -68,9 +65,9 @@ export default function Home() {
               priority
             />
           </div>
-        </div>
+        </div> */}
 
-        <div className={styles.grid}>
+        {/* <div className={styles.grid}>
           <a
             href='https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
             className={styles.card}
@@ -127,7 +124,7 @@ export default function Home() {
               with&nbsp;Vercel.
             </p>
           </a>
-        </div>
+        </div> */}
       </main>
     </>
   )
