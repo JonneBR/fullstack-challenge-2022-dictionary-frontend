@@ -29,6 +29,8 @@ export default function Home() {
 
   const playerAudio = mockCacheStructure.hello.firstAudio
 
+  const meaningDefinitions = mockCacheStructure.hello.definitionMeanings
+
   return (
     <>
       <Head>
@@ -47,7 +49,7 @@ export default function Home() {
               <Player audio={playerAudio} />
             </main>
             <footer>
-              <Meanings />
+              <Meanings definitions={meaningDefinitions} />
             </footer>
           </section>
         </div>
