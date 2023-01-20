@@ -14,6 +14,20 @@
     font-weight: normal;
   }
 
+  .favorite-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    padding: 20px;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    cursor: pointer;
+  }
+
   /* border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
       background: linear-gradient(
         to bottom,
