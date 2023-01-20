@@ -3,11 +3,12 @@ import words from '../../../word-list.json'
 import styles from './styles.module.scss'
 
 export default function WordList() {
-  console.log(Object.keys(words).indexOf('abasgi'))
+  // console.log(Object.keys(words).indexOf('abasgi'))
 
-  const onClickWord = (element: any) => {
+  const onClickWord = (element: string) => {
     console.log('element', element)
   }
+
   return (
     <Row>
       {Object.keys(words).map((element) => {

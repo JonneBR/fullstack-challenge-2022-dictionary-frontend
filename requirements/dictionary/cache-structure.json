@@ -1,6 +1,7 @@
 {
   "hello": {
     "word": "hello",
+    "isFavorite": true,
     "phonetics": [
       {
         "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/hello-au.mp3",
