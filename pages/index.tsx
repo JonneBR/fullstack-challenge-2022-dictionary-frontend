@@ -39,12 +39,7 @@ export default function Home() {
             </div>
 
             <Player />
-            <div className={styles['container-icons-player']}>
-              {/* <StarTwoTone style={{ fontSize: '2rem' }} /> */}
-              {/* <PauseOutlined style={{ fontSize: '2rem' }} /> */}
 
-              {/* <StarOutlined style={{ fontSize: '2rem' }} /> */}
-            </div>
             <div className={styles['container-word-meanings']}>
               <br />
               <br />

@@ -4,7 +4,7 @@ import { convertDurationToTimeString } from '../../utils/convertDurationToTimeSt
 import styles from './styles.module.scss'
 
 export default function Player() {
-  const isPlaying = true
+  const isPlaying = false
   const episode = true
   return (
     <>
@@ -35,7 +35,7 @@ export default function Player() {
         <button
           type='button'
           // disabled={!episode}
-          // className={styles.playButton}
+          className={styles.playButton}
           // onClick={togglePlay}
         >
           {isPlaying ? (
