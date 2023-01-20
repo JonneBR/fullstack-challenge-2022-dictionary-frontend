@@ -28,11 +28,17 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles['dictionary-container']}>
-          <div className={styles['container-wrapper']}>
-            <Dictionary />
-            <Player />
-            <Meanings />
-          </div>
+          <section className={styles['container-wrapper']}>
+            <header>
+              <Dictionary />
+            </header>
+            <main>
+              <Player />
+            </main>
+            <footer>
+              <Meanings />
+            </footer>
+          </section>
         </div>
         <div className={styles['tab-container']}>
           <Tab />
