@@ -1,12 +1,13 @@
-import { Inter } from '@next/font/google'
+// import { Inter } from '@next/font/google'
 import axios from 'axios'
 import Head from 'next/head'
 import { useEffect } from 'react'
+import Dictionary from '../src/components/Dictionary/Dictionary'
 import Player from '../src/components/Player/Player'
 import Tab from '../src/components/tab/Tab'
 import styles from '../styles/Home.module.css'
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const fetchData = async () => {
@@ -27,17 +28,7 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles['dictionary-container']}>
           <div className={styles['container-wrapper']}>
-            <div className={styles['container-word-phonetic']}>
-              <h2>hello</h2>
-              <h3
-                style={{
-                  fontWeight: 'normal',
-                }}
-              >
-                həˈləʊ
-              </h3>
-            </div>
-
+            <Dictionary />
             <Player />
 
             <div className={styles['container-word-meanings']}>
