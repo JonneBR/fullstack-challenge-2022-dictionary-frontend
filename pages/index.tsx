@@ -1,12 +1,8 @@
-import {
-  LeftOutlined,
-  RightOutlined,
-  StepForwardOutlined,
-} from '@ant-design/icons'
 import { Inter } from '@next/font/google'
 import axios from 'axios'
 import Head from 'next/head'
 import { useEffect } from 'react'
+import Player from '../src/components/Player/Player'
 import Tab from '../src/components/tab/Tab'
 import styles from '../styles/Home.module.css'
 
@@ -41,12 +37,12 @@ export default function Home() {
                 həˈləʊ
               </h3>
             </div>
+
+            <Player />
             <div className={styles['container-icons-player']}>
               {/* <StarTwoTone style={{ fontSize: '2rem' }} /> */}
               {/* <PauseOutlined style={{ fontSize: '2rem' }} /> */}
-              <LeftOutlined style={{ fontSize: '2rem' }} />
-              <StepForwardOutlined style={{ fontSize: '2rem' }} />
-              <RightOutlined style={{ fontSize: '2rem' }} />
+
               {/* <StarOutlined style={{ fontSize: '2rem' }} /> */}
             </div>
             <div className={styles['container-word-meanings']}>
