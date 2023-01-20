@@ -3,6 +3,7 @@ import axios from 'axios'
 import Head from 'next/head'
 import { useEffect } from 'react'
 import Dictionary from '../src/components/Dictionary/Dictionary'
+import Meanings from '../src/components/Meanings/Meanings'
 import Player from '../src/components/Player/Player'
 import Tab from '../src/components/tab/Tab'
 import styles from '../styles/Home.module.css'
@@ -30,15 +31,7 @@ export default function Home() {
           <div className={styles['container-wrapper']}>
             <Dictionary />
             <Player />
-
-            <div className={styles['container-word-meanings']}>
-              <br />
-              <br />
-              <br />
-              <br />
-              <h1>Meanings</h1>
-              <p>Verb - Hello! or an equivalente greeting</p>
-            </div>
+            <Meanings />
           </div>
         </div>
         <div className={styles['tab-container']}>
