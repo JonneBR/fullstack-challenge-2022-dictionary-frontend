@@ -3,12 +3,18 @@ import Image from 'next/image'
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString'
 import styles from './styles.module.scss'
 
+type Props = {
+  audio: string
+}
+
 // https://api.dictionaryapi.dev/media/pronunciations/en/hello-au.mp3
-export default function Player() {
+export default function Player(props: Props) {
+  const { audio } = props
   const isPlaying = false
   const episode = true
   return (
     <>
+      <p>{audio}</p>
       <div className={styles.progress}>
         <span>{convertDurationToTimeString(0)}</span>
         <div className={styles.slider}>

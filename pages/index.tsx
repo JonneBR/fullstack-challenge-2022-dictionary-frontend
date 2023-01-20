@@ -27,6 +27,8 @@ export default function Home() {
     textPhonetics: mockCacheStructure.hello.textPhonetics,
   }
 
+  const playerAudio = mockCacheStructure.hello.firstAudio
+
   return (
     <>
       <Head>
@@ -42,7 +44,7 @@ export default function Home() {
               <Dictionary props={dictionaryData} />
             </header>
             <main>
-              <Player />
+              <Player audio={playerAudio} />
             </main>
             <footer>
               <Meanings />
