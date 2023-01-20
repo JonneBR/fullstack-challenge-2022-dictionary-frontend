@@ -6,9 +6,12 @@ import Dictionary from '../src/components/Dictionary/Dictionary'
 import Meanings from '../src/components/Meanings/Meanings'
 import Player from '../src/components/Player/Player'
 import Tab from '../src/components/Tab/Tab'
+import cacheStructure from '../src/mocks/cache-structure.json'
 import styles from '../styles/Home.module.css'
 
 // const inter = Inter({ subsets: ['latin'] })
+
+const mockCacheStructure = cacheStructure
 
 export default function Home() {
   const fetchData = async () => {
@@ -17,6 +20,12 @@ export default function Home() {
   useEffect(() => {
     fetchData().then((response) => console.log(response))
   }, [])
+
+  const dictionaryData = {
+    word: mockCacheStructure.hello.word,
+    isFavorite: mockCacheStructure.hello.isFavorite,
+    textPhonetics: mockCacheStructure.hello.textPhonetics,
+  }
 
   return (
     <>
@@ -30,7 +39,7 @@ export default function Home() {
         <div className={styles['dictionary-container']}>
           <section className={styles['container-wrapper']}>
             <header>
-              <Dictionary />
+              <Dictionary props={dictionaryData} />
             </header>
             <main>
               <Player />
