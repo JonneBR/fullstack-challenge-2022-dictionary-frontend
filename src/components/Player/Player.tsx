@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString'
 import styles from './styles.module.scss'
 
+// https://api.dictionaryapi.dev/media/pronunciations/en/hello-au.mp3
 export default function Player() {
   const isPlaying = false
   const episode = true
