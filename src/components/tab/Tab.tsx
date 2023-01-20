@@ -3,12 +3,10 @@ import {
   StarOutlined,
   UnorderedListOutlined,
 } from '@ant-design/icons'
-import { Badge, Col, Row, Tabs } from 'antd'
-import words from '../../../word-list.json'
-import styles from './Tab.module.css'
+import { Badge, Tabs } from 'antd'
+import WordList from '../WordList/WordList'
 
 export default function Tab() {
-  console.log(Object.keys(words).indexOf('abasgi'))
   return (
     <Tabs
       style={{ width: '100%' }}
@@ -22,29 +20,7 @@ export default function Tab() {
             </span>
           ),
           key: '1',
-          children: (
-            <>
-              <Row>
-                {Object.keys(words).map((element) => {
-                  return (
-                    <Col className='gutter-row' span={6} key={element}>
-                      <div className={styles['gutter-box']}>{element}</div>
-                    </Col>
-                  )
-                })}
-
-                {/* <Col className='gutter-row' span={6}>
-                        <div className={styles['gutter-box']}>Box</div>
-                      </Col>
-                      <Col className='gutter-row' span={6}>
-                        <div className={styles['gutter-box']}>Word</div>
-                      </Col>
-                      <Col className='gutter-row' span={6}>
-                        <div className={styles['gutter-box']}>Programming</div>
-                      </Col> */}
-              </Row>
-            </>
-          ),
+          children: <WordList />,
         },
         {
           label: (
@@ -54,7 +30,7 @@ export default function Tab() {
             </span>
           ),
           key: '2',
-          children: 'Favotires',
+          children: 'Favorites',
         },
         {
           label: (

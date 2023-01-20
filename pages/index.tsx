@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import Dictionary from '../src/components/Dictionary/Dictionary'
 import Meanings from '../src/components/Meanings/Meanings'
 import Player from '../src/components/Player/Player'
-import Tab from '../src/components/tab/Tab'
+import Tab from '../src/components/Tab/Tab'
 import styles from '../styles/Home.module.css'
 
 // const inter = Inter({ subsets: ['latin'] })
