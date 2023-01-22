@@ -1,18 +1,17 @@
 import { Col, Row } from 'antd'
 import styles from '../../../styles/grid-list/styles.module.scss'
-import { usePlayer } from '../../contexts/PlayerContext'
 import { DictionaryCache } from '../../data/models/dictionary-cache'
 
 type Props = {
   words: DictionaryCache
+  onClickWord: (word: string) => void
 }
 
 export default function CachedList(props: Props) {
-  const { words } = props
-  const { setWord } = usePlayer()
+  const { words, onClickWord } = props
 
-  const onClickWord = (word: string) => {
-    setWord(word)
+  const onSelect = (word: string) => {
+    onClickWord(word)
   }
   return (
     <Row>
@@ -21,7 +20,7 @@ export default function CachedList(props: Props) {
           <Col className='gutter-row' span={6} key={element}>
             <div
               className={styles['gutter-box']}
-              onClick={() => onClickWord(element)}
+              onClick={() => onSelect(element)}
             >
               {element}
             </div>

@@ -6,13 +6,20 @@ import {
 import { Badge, Tabs } from 'antd'
 import cacheStructure from '../../../src/mocks/cache-structure.json'
 import cacheFavorites from '../../../src/mocks/favorite-words.json'
+import { usePlayer } from '../../contexts/PlayerContext'
 import { DictionaryCache } from '../../data/models/dictionary-cache'
 import CachedList from '../CachedList/CachedList'
 import WordList from '../WordList/WordList'
 
 export default function Tab() {
+  const { setWord } = usePlayer()
+
   const cachedWords: DictionaryCache = cacheStructure
   const favoriteWords: DictionaryCache = cacheFavorites
+
+  const onClickWord = (word: string): void => {
+    setWord(word)
+  }
 
   return (
     <Tabs
@@ -37,7 +44,9 @@ export default function Tab() {
             </span>
           ),
           key: '2',
-          children: <CachedList words={favoriteWords} />,
+          children: (
+            <CachedList words={favoriteWords} onClickWord={onClickWord} />
+          ),
         },
         {
           label: (
@@ -47,7 +56,9 @@ export default function Tab() {
             </span>
           ),
           key: '3',
-          children: <CachedList words={cachedWords} />,
+          children: (
+            <CachedList words={cachedWords} onClickWord={onClickWord} />
+          ),
         },
       ]}
     />

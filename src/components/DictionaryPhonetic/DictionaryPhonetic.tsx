@@ -1,5 +1,4 @@
 import { StarOutlined, StarTwoTone } from '@ant-design/icons'
-import { usePlayer } from '../../contexts/PlayerContext'
 import styles from './styles.module.scss'
 
 type Props = {
@@ -8,8 +7,6 @@ type Props = {
 
 export default function DictionaryPhonetic({ props }: Props): JSX.Element {
   const { word, isFavorite, textPhonetics } = props
-
-  const { selectedWord } = usePlayer()
 
   const Icon = () =>
     isFavorite ? <StarTwoTone /> : <StarOutlined style={{ color: '#434343' }} />
@@ -32,7 +29,7 @@ export default function DictionaryPhonetic({ props }: Props): JSX.Element {
       >
         <Icon />
       </div>
-      <h2>{selectedWord}</h2>
+      <h2>{word}</h2>
       <Photenics />
     </div>
   )
