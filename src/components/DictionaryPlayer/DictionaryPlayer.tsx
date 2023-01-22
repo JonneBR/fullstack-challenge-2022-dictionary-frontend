@@ -1,18 +1,24 @@
 import { Slider } from 'antd'
 import Image from 'next/image'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { DictionaryCache } from '../../data/models/dictionary-cache'
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString'
 import styles from './styles.module.scss'
 
 type Props = {
   audio: string
+  audioData: DictionaryCache
 }
 
 export default function DictionaryPlayer(props: Props) {
-  const { audio } = props
+  const { audio, audioData } = props
 
   const audioRef = useRef<HTMLAudioElement>(null)
   const [progress, setProgress] = useState(0)
+  const [isPlaying, setIsPlaying] = useState<boolean>(false)
+
+  const hasNext = false
+  // const hasPrevious = true
 
   // useEffect(() => {
   //   const audioInstance = new Audio(audio)
@@ -23,6 +29,18 @@ export default function DictionaryPlayer(props: Props) {
   //     }
   //   })
   // }, [audio])
+
+  useEffect(() => {
+    if (!audioRef.current) {
+      return
+    }
+
+    if (isPlaying) {
+      audioRef.current.play()
+    } else {
+      audioRef.current.pause()
+    }
+  }, [isPlaying])
 
   function setupProgressListener() {
     if (audioRef.current !== null) {
@@ -36,25 +54,47 @@ export default function DictionaryPlayer(props: Props) {
     }
   }
 
-  const isPlaying = false
-  const episode = true
+  function togglePlay() {
+    setIsPlaying(!isPlaying)
+  }
+
+  function handleEpisodeEnded() {
+    setIsPlaying(false)
+  }
+
+  function handleSeek(amount: number) {
+    // audioRef.current.currentTime = amount;
+    setProgress(amount)
+  }
+
+  function playPrevious() {
+    console.log(audioData)
+    const wordsArray = Object.keys(audioData)
+    const indexFather = wordsArray.indexOf('father')
+    const previousIndex = wordsArray[indexFather - 1]
+    if (previousIndex !== undefined) {
+      console.log(audioData[previousIndex].firstAudio)
+    }
+  }
+
   return (
     <>
       <p>{audio}</p>
       <div className={styles.progress}>
         <span>{convertDurationToTimeString(progress)}</span>
         <div className={styles.slider}>
-          {episode ? (
-            <Slider max={1} value={progress} disabled={false} />
-          ) : (
-            <Slider disabled={true} />
-          )}
+          <Slider
+            max={1}
+            value={progress}
+            onChange={handleSeek}
+            disabled={false}
+          />
         </div>
         <audio
           src={audio}
           ref={audioRef}
-          autoPlay
-          // onEnded={handleEpisodeEnded}
+          // autoPlay
+          onEnded={handleEpisodeEnded}
           // loop={isLooping}
           // onPlay={() => setPlayingState(true)}
           // onPause={() => setPlayingState(false)}
@@ -65,7 +105,7 @@ export default function DictionaryPlayer(props: Props) {
       <div className={styles.buttons}>
         <button
           type='button'
-          // onClick={playPrevious}
+          onClick={playPrevious}
           // disabled={!episode || !hasPrevious}
         >
           <Image
@@ -79,7 +119,7 @@ export default function DictionaryPlayer(props: Props) {
           type='button'
           // disabled={!episode}
           className={styles.playButton}
-          // onClick={togglePlay}
+          onClick={togglePlay}
         >
           {isPlaying ? (
             <Image src='/svg/pause.svg' alt='Pausar' width={25} height={25} />
@@ -91,6 +131,7 @@ export default function DictionaryPlayer(props: Props) {
           type='button'
           // onClick={playNext}
           // disabled={!episode || !hasNext}
+          disabled={!hasNext}
         >
           <Image
             src='/svg/play-next.svg'

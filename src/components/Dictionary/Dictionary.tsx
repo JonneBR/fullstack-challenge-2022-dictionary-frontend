@@ -46,7 +46,7 @@ export default function Dictionary() {
           <DictionaryPhonetic phoneticData={phoneticData} />
         </header>
         <main>
-          <DictionaryPlayer audio={audio} />
+          <DictionaryPlayer audio={audio} audioData={mockCacheStructure} />
         </main>
         <footer>
           <DictionaryMeanings definitions={definitions} />
