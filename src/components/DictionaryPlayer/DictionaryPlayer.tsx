@@ -1,5 +1,6 @@
 import { Slider } from 'antd'
 import Image from 'next/image'
+import { useRef, useState } from 'react'
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString'
 import styles from './styles.module.scss'
 
@@ -7,9 +8,33 @@ type Props = {
   audio: string
 }
 
-// https://api.dictionaryapi.dev/media/pronunciations/en/hello-au.mp3
 export default function DictionaryPlayer(props: Props) {
   const { audio } = props
+
+  const audioRef = useRef<HTMLAudioElement>(null)
+  const [progress, setProgress] = useState(0)
+
+  // useEffect(() => {
+  //   const audioInstance = new Audio(audio)
+  //   audioInstance.addEventListener('loadedmetadata', (e) => {
+  //     if (e.target !== null) {
+  //       const duration = (e.target as HTMLAudioElement).duration
+  //       durationRef.current = duration
+  //     }
+  //   })
+  // }, [audio])
+
+  function setupProgressListener() {
+    if (audioRef.current !== null) {
+      audioRef.current.currentTime = 0
+
+      audioRef.current.addEventListener('timeupdate', () => {
+        if (audioRef.current !== null) {
+          setProgress(Math.floor(audioRef.current.currentTime))
+        }
+      })
+    }
+  }
 
   const isPlaying = false
   const episode = true
@@ -17,23 +42,23 @@ export default function DictionaryPlayer(props: Props) {
     <>
       <p>{audio}</p>
       <div className={styles.progress}>
-        <span>{convertDurationToTimeString(0)}</span>
+        <span>{convertDurationToTimeString(progress)}</span>
         <div className={styles.slider}>
           {episode ? (
-            <Slider defaultValue={30} disabled={false} />
+            <Slider max={1} value={progress} disabled={false} />
           ) : (
             <Slider disabled={true} />
           )}
         </div>
         <audio
           src={audio}
-          // ref={audioRef}
+          ref={audioRef}
           autoPlay
           // onEnded={handleEpisodeEnded}
           // loop={isLooping}
           // onPlay={() => setPlayingState(true)}
           // onPause={() => setPlayingState(false)}
-          // onLoadedMetadata={setupProgressListener}
+          onLoadedMetadata={setupProgressListener}
         />
         <span>{convertDurationToTimeString(1)}</span>
       </div>
