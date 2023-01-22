@@ -16,7 +16,7 @@ import { createContext, ReactNode, useContext, useState } from 'react'
 // }
 
 type PlayerContextData = {
-  selectedWord: string
+  currentWord: string
   setWord: (word: string) => void
 }
 
@@ -29,14 +29,14 @@ type PlayerContextProviderProps = {
 export function PlayerContextProvider({
   children,
 }: PlayerContextProviderProps) {
-  const [selectedWord, setSelectedWord] = useState<string>('hello')
+  const [currentWord, setCurrentWord] = useState<string>('hello')
 
   function setWord(word: string) {
-    setSelectedWord(word)
+    setCurrentWord(word)
   }
 
   return (
-    <PlayerContext.Provider value={{ selectedWord, setWord }}>
+    <PlayerContext.Provider value={{ currentWord, setWord }}>
       {children}
     </PlayerContext.Provider>
   )

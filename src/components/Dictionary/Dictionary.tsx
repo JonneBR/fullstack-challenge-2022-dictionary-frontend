@@ -12,7 +12,7 @@ import DictionaryPlayer from '../DictionaryPlayer/DictionaryPlayer'
 const mockCacheStructure: DictionaryCache = cacheStructure
 
 export default function Dictionary() {
-  const { selectedWord } = usePlayer()
+  const { currentWord } = usePlayer()
   const [phoneticData, setPhoneticData] = useState<DictionaryPhoneticModel>({
     word: '',
     isFavorite: false,
@@ -22,13 +22,11 @@ export default function Dictionary() {
   const [definitions, setDefinitions] = useState<string[]>([])
   const [loading, setLoading] = useState<boolean>(false)
 
-  const meaningDefinitions = mockCacheStructure.hello.definitionMeanings
-
   useEffect(() => {
     setLoading(true)
 
     setTimeout(() => {
-      const wordCached = mockCacheStructure[selectedWord]
+      const wordCached = mockCacheStructure[currentWord]
       setPhoneticData({
         word: wordCached.word,
         isFavorite: wordCached.isFavorite,
@@ -39,7 +37,7 @@ export default function Dictionary() {
 
       setLoading(false)
     }, 300)
-  }, [selectedWord])
+  }, [currentWord])
 
   return (
     <section className={styles['container-wrapper']}>
