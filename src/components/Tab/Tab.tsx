@@ -4,9 +4,14 @@ import {
   UnorderedListOutlined,
 } from '@ant-design/icons'
 import { Badge, Tabs } from 'antd'
+import cacheStructure from '../../../src/mocks/cache-structure.json'
+import { DictionaryCache } from '../../data/models/dictionary-cache'
+import CachedList from '../CachedList/CachedList'
 import WordList from '../WordList/WordList'
 
 export default function Tab() {
+  const cachedWords: DictionaryCache = cacheStructure
+
   return (
     <Tabs
       style={{ width: '100%' }}
@@ -40,7 +45,7 @@ export default function Tab() {
             </span>
           ),
           key: '3',
-          children: 'History',
+          children: <CachedList words={cachedWords} />,
         },
       ]}
     />

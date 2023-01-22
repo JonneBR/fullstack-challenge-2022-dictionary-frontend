@@ -1,14 +1,13 @@
 import { Col, Row } from 'antd'
 import styles from '../../../styles/grid-list/styles.module.scss'
-import words from '../../../word-list.json'
+import { DictionaryCache } from '../../data/models/dictionary-cache'
 
-export default function WordList() {
-  // console.log(Object.keys(words).indexOf('abasgi'))
+type Props = {
+  words: DictionaryCache
+}
 
-  const onClickWord = (element: string) => {
-    console.log('element', element)
-  }
-
+export default function CachedList(props: Props) {
+  const { words } = props
   return (
     <Row>
       {Object.keys(words).map((element) => {
@@ -16,7 +15,7 @@ export default function WordList() {
           <Col className='gutter-row' span={6} key={element}>
             <div
               className={styles['gutter-box']}
-              onClick={() => onClickWord(element)}
+              //   onClick={() => onClickWord(element)}
             >
               {element}
             </div>

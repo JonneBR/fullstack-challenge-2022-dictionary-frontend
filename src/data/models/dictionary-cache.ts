@@ -1,10 +1,12 @@
 export interface DictionaryCache {
-  word: string
-  isFavorite: boolean
-  phonetics: PhoneticsCache[]
-  meanings: MeaningsCache[]
-  license: LicenseCache
-  sourceUrls: string[]
+  [key: string]: {
+    word: string
+    isFavorite: boolean
+    textPhonetics: string[]
+    firstAudio: string
+    definitionMeanings: string[]
+    phonetics: PhoneticsCache[]
+  }
 }
 
 export interface PhoneticsCache {
@@ -15,10 +17,8 @@ export interface PhoneticsCache {
 }
 
 export interface LicenseCache {
-  license: {
-    name: string
-    url: string
-  }
+  name: string
+  url: string
 }
 
 export interface MeaningsCache {
