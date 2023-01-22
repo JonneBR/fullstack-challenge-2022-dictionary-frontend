@@ -1,6 +1,7 @@
 export interface DictionaryCache {
   [key: string]: {
     word: string
+    photenic?: string
     isFavorite: boolean
     textPhonetics: string[]
     firstAudio: string
@@ -28,6 +29,7 @@ export interface MeaningsCache {
       definition: string
       synonyms: []
       antonyms: []
+      example?: string
     }
   ]
   synonyms: string[]

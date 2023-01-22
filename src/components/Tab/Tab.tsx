@@ -5,12 +5,14 @@ import {
 } from '@ant-design/icons'
 import { Badge, Tabs } from 'antd'
 import cacheStructure from '../../../src/mocks/cache-structure.json'
+import cacheFavorites from '../../../src/mocks/favorite-words.json'
 import { DictionaryCache } from '../../data/models/dictionary-cache'
 import CachedList from '../CachedList/CachedList'
 import WordList from '../WordList/WordList'
 
 export default function Tab() {
   const cachedWords: DictionaryCache = cacheStructure
+  const favoriteWords: DictionaryCache = cacheFavorites
 
   return (
     <Tabs
@@ -35,7 +37,7 @@ export default function Tab() {
             </span>
           ),
           key: '2',
-          children: 'Favorites',
+          children: <CachedList words={favoriteWords} />,
         },
         {
           label: (
