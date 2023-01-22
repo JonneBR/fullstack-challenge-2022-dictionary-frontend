@@ -1,12 +1,15 @@
 import { StarOutlined, StarTwoTone } from '@ant-design/icons'
+import { DictionaryPhoneticModel } from '../../data/models/dictionary-phonetic'
 import styles from './styles.module.scss'
 
 type Props = {
-  props: { word: string; isFavorite: boolean; textPhonetics: string[] }
+  phoneticData: DictionaryPhoneticModel
 }
 
-export default function DictionaryPhonetic({ props }: Props): JSX.Element {
-  const { word, isFavorite, textPhonetics } = props
+export default function DictionaryPhonetic({
+  phoneticData,
+}: Props): JSX.Element {
+  const { word, isFavorite, textPhonetics } = phoneticData
 
   const Icon = () =>
     isFavorite ? <StarTwoTone /> : <StarOutlined style={{ color: '#434343' }} />

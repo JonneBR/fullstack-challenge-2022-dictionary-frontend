@@ -29,7 +29,7 @@ type PlayerContextProviderProps = {
 export function PlayerContextProvider({
   children,
 }: PlayerContextProviderProps) {
-  const [selectedWord, setSelectedWord] = useState<string>('')
+  const [selectedWord, setSelectedWord] = useState<string>('hello')
 
   function setWord(word: string) {
     setSelectedWord(word)
