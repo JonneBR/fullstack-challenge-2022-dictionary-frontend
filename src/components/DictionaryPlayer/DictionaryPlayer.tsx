@@ -10,6 +10,7 @@ type Props = {
 // https://api.dictionaryapi.dev/media/pronunciations/en/hello-au.mp3
 export default function DictionaryPlayer(props: Props) {
   const { audio } = props
+
   const isPlaying = false
   const episode = true
   return (
@@ -24,6 +25,16 @@ export default function DictionaryPlayer(props: Props) {
             <Slider disabled={true} />
           )}
         </div>
+        <audio
+          src={audio}
+          // ref={audioRef}
+          autoPlay
+          // onEnded={handleEpisodeEnded}
+          // loop={isLooping}
+          // onPlay={() => setPlayingState(true)}
+          // onPause={() => setPlayingState(false)}
+          // onLoadedMetadata={setupProgressListener}
+        />
         <span>{convertDurationToTimeString(1)}</span>
       </div>
       <div className={styles.buttons}>
