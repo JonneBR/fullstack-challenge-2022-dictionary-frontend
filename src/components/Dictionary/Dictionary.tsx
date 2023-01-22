@@ -1,39 +1,32 @@
-import { StarOutlined, StarTwoTone } from '@ant-design/icons'
-import { usePlayer } from '../../contexts/PlayerContext'
-import styles from './styles.module.scss'
+import styles from '../../../styles/Home.module.css'
+import cacheStructure from '../../mocks/cache-structure.json'
+import DictionaryMeanings from '../DictionaryMeanings/DictionaryMeanings'
+import DictionaryPhonetic from '../DictionaryPhonetic/DictionaryPhonetic'
+import DictionaryPlayer from '../DictionaryPlayer/DictionaryPlayer'
 
-type Props = {
-  props: { word: string; isFavorite: boolean; textPhonetics: string[] }
-}
+const mockCacheStructure = cacheStructure
 
-export default function Dictionary({ props }: Props): JSX.Element {
-  const { word, isFavorite, textPhonetics } = props
-
-  const { selectedWord } = usePlayer()
-
-  const Icon = () =>
-    isFavorite ? <StarTwoTone /> : <StarOutlined style={{ color: '#434343' }} />
-
-  const Photenics = () => {
-    return (
-      <>
-        {textPhonetics.map((text) => {
-          return <h3 key={text}>{text}</h3>
-        })}
-      </>
-    )
+export default function Dictionary() {
+  const dictionaryData = {
+    word: mockCacheStructure.hello.word,
+    isFavorite: mockCacheStructure.hello.isFavorite,
+    textPhonetics: mockCacheStructure.hello.textPhonetics,
   }
 
+  const playerAudio = mockCacheStructure.hello.firstAudio
+
+  const meaningDefinitions = mockCacheStructure.hello.definitionMeanings
   return (
-    <div className={styles['container-dictionary']}>
-      <div
-        className={styles['favorite-icon']}
-        // onClick={() => setIsFavorite(!isFavorite)}
-      >
-        <Icon />
-      </div>
-      <h2>{selectedWord}</h2>
-      <Photenics />
-    </div>
+    <section className={styles['container-wrapper']}>
+      <header>
+        <DictionaryPhonetic props={dictionaryData} />
+      </header>
+      <main>
+        <DictionaryPlayer audio={playerAudio} />
+      </main>
+      <footer>
+        <DictionaryMeanings definitions={meaningDefinitions} />
+      </footer>
+    </section>
   )
 }

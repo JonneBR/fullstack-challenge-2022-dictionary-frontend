@@ -8,7 +8,7 @@ type Props = {
 }
 
 // https://api.dictionaryapi.dev/media/pronunciations/en/hello-au.mp3
-export default function Player(props: Props) {
+export default function DictionaryPlayer(props: Props) {
   const { audio } = props
   const isPlaying = false
   const episode = true

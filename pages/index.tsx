@@ -3,16 +3,11 @@ import axios from 'axios'
 import Head from 'next/head'
 import { useEffect } from 'react'
 import Dictionary from '../src/components/Dictionary/Dictionary'
-import Meanings from '../src/components/Meanings/Meanings'
-import Player from '../src/components/Player/Player'
 import Tab from '../src/components/Tab/Tab'
 import { PlayerContextProvider } from '../src/contexts/PlayerContext'
-import cacheStructure from '../src/mocks/cache-structure.json'
 import styles from '../styles/Home.module.css'
 
 // const inter = Inter({ subsets: ['latin'] })
-
-const mockCacheStructure = cacheStructure
 
 export default function Home() {
   const fetchData = async () => {
@@ -21,16 +16,6 @@ export default function Home() {
   useEffect(() => {
     fetchData().then((response) => console.log(response))
   }, [])
-
-  const dictionaryData = {
-    word: mockCacheStructure.hello.word,
-    isFavorite: mockCacheStructure.hello.isFavorite,
-    textPhonetics: mockCacheStructure.hello.textPhonetics,
-  }
-
-  const playerAudio = mockCacheStructure.hello.firstAudio
-
-  const meaningDefinitions = mockCacheStructure.hello.definitionMeanings
 
   return (
     <>
@@ -43,17 +28,7 @@ export default function Home() {
       <PlayerContextProvider>
         <main className={styles.main}>
           <div className={styles['dictionary-container']}>
-            <section className={styles['container-wrapper']}>
-              <header>
-                <Dictionary props={dictionaryData} />
-              </header>
-              <main>
-                <Player audio={playerAudio} />
-              </main>
-              <footer>
-                <Meanings definitions={meaningDefinitions} />
-              </footer>
-            </section>
+            <Dictionary />
           </div>
           <div className={styles['tab-container']}>
             <Tab />

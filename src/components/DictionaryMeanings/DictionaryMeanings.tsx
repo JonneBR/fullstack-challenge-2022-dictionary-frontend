@@ -4,7 +4,7 @@ type Props = {
   definitions: string[]
 }
 
-export default function Meanings(props: Props) {
+export default function DictionaryMeanings(props: Props) {
   const { definitions } = props
 
   const Definitions = () => {
