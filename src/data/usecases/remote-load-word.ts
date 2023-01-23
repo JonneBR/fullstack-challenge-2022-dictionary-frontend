@@ -4,12 +4,15 @@ import { HttpGetClient } from '../protocols'
 export class RemoteLoadWord implements LoadEnglishWord {
   constructor(
     private readonly url: string,
-    private readonly httpGetClient: HttpGetClient<void>
+    private readonly httpGetClient: HttpGetClient
   ) {}
 
   async requestWord(): Promise<void> {
     const httpResponse = await this.httpGetClient.get(this.url)
 
-    return httpResponse.body
+    const remoteSurveys = httpResponse.body || []
+    console.log('remoteSurveys', remoteSurveys)
+
+    // return httpResponse.body
   }
 }
