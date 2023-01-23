@@ -53,3 +53,13 @@ test('Should call CookieAdapter set method with correct values', () => {
 
   expect(setSpy).toHaveBeenCalledWith(key, value)
 })
+
+test('Should call CookieAdapter get method with correct value', () => {
+  const { sut } = makeSut()
+  const getSpy = jest.spyOn(sut, 'get')
+  const key = 'history'
+
+  sut.get(key)
+
+  expect(getSpy).toHaveBeenCalledWith(key)
+})
