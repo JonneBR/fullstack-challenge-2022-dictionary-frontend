@@ -6,7 +6,7 @@ export interface DictionaryCache {
     textPhonetics: string[]
     firstAudio: string
     definitionMeanings: string[]
-    phonetics: PhoneticsCache[]
+    phonetics?: PhoneticsCache[]
   }
 }
 
