@@ -1,1 +1,1 @@
-export * from './load-planets'
+export * from './load-english-word'

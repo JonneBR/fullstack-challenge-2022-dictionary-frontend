@@ -1,16 +1,34 @@
-export type LoadPlanetsModel = {
+export interface LoadEnglishWordModel {
+  word: string
+  photenic?: string
+  phonetics?: PhoneticsModel[]
+  meanings: MeaningsModel[]
+  license?: LicenseModel
+  sourceUrls: string[]
+}
+
+export interface PhoneticsModel {
+  text?: string
+  audio?: string
+  sourceUrl?: string
+  license?: LicenseModel
+}
+
+export interface LicenseModel {
   name: string
-  rotation_period: string
-  orbital_period: string
-  diameter: string
-  climate: string
-  gravity: string
-  terrain: string
-  surface_water: string
-  population: string
-  residents: string[]
-  films: string[]
-  created: string
-  edited: string
   url: string
+}
+
+export interface MeaningsModel {
+  partOfSpeech: string
+  definitions: [
+    {
+      definition: string
+      synonyms: []
+      antonyms: []
+      example?: string
+    }
+  ]
+  synonyms: string[]
+  antonyms: string[]
 }

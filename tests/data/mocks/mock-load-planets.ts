@@ -6,9 +6,8 @@ import {
   randUrl,
   randWeekday,
 } from '@ngneat/falso'
-import { LoadPlanets } from '../../../src/domain/usecases'
 
-export const mockRemoteLoadPlanetsModel = (): LoadPlanets.Model => ({
+export const mockRemoteLoadPlanetsModel = (): any => ({
   name: randFullName(),
   rotation_period: randNumber().toString(),
   orbital_period: randNumber().toString(),
@@ -25,7 +24,7 @@ export const mockRemoteLoadPlanetsModel = (): LoadPlanets.Model => ({
   url: randUrl(),
 })
 
-export const mockRemoteLoadPlanetsListModel = (): LoadPlanets.Model[] => [
+export const mockRemoteLoadPlanetsListModel = (): any => [
   mockRemoteLoadPlanetsModel(),
   mockRemoteLoadPlanetsModel(),
 ]
