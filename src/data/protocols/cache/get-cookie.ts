@@ -1,3 +1,3 @@
 export interface GetCookie {
-  get(key: string): void
+  get(key: string): string | undefined
 }
