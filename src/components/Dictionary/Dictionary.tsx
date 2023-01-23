@@ -27,15 +27,17 @@ export default function Dictionary() {
 
     setTimeout(() => {
       const wordCached = mockCacheStructure[currentWord]
-      setPhoneticData({
-        word: wordCached.word,
-        isFavorite: wordCached.isFavorite,
-        textPhonetics: wordCached.textPhonetics,
-      })
-      setAudio(wordCached.firstAudio)
-      setDefinitions(wordCached.definitionMeanings)
+      if (wordCached) {
+        setPhoneticData({
+          word: wordCached.word,
+          isFavorite: wordCached.isFavorite,
+          textPhonetics: wordCached.textPhonetics,
+        })
+        setAudio(wordCached.firstAudio)
+        setDefinitions(wordCached.definitionMeanings)
 
-      setLoading(false)
+        setLoading(false)
+      }
     }, 300)
   }, [currentWord])
 

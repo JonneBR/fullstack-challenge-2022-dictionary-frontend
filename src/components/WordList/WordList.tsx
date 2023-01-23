@@ -1,16 +1,13 @@
 import { Col, Row } from 'antd'
 import styles from '../../../styles/grid-list/styles.module.scss'
 import words from '../../../word-list.json'
-import { usePlayer } from '../../contexts/PlayerContext'
 
-export default function WordList() {
+type Props = {
+  onClickWord: (word: string) => void
+}
+export default function WordList(props: Props) {
+  const { onClickWord } = props
   // console.log(Object.keys(words).indexOf('abasgi'))
-
-  const { setWord } = usePlayer()
-
-  const onClickWord = (word: string) => {
-    setWord(word)
-  }
 
   return (
     <Row>

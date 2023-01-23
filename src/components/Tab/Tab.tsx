@@ -35,7 +35,7 @@ export default function Tab() {
             </span>
           ),
           key: '1',
-          children: <WordList />,
+          children: <WordList onClickWord={onClickWord} />,
         },
         {
           label: (
