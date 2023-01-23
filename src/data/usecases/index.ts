@@ -1,1 +1,1 @@
-export * from './remote-load-planets'
+export * from './remote-load-word'

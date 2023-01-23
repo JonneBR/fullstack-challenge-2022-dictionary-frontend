@@ -1,5 +1,5 @@
 export interface LoadEnglishWord {
-  loadWord: () => Promise<void>
+  requestWord: () => Promise<void>
 }
 
 // export namespace LoadPlanets {
