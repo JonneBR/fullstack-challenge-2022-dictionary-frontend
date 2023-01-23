@@ -1,7 +1,7 @@
 export interface LoadEnglishWordModel {
   word: string
   photenic?: string
-  phonetics?: PhoneticsModel[]
+  phonetics: PhoneticsModel[]
   meanings: MeaningsModel[]
   license?: LicenseModel
   sourceUrls: string[]
