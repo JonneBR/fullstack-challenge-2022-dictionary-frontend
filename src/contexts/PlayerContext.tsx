@@ -34,11 +34,27 @@ export function PlayerContextProvider({
   }
 
   function setCachedWordFavorite(word: string) {
-    const cookie = makeCookieAdapter().get('cache-words')
-    if (cookie) {
-      const cache: DictionaryCache = JSON.parse(cookie)
-      cache[word].isFavorite = !cache[word].isFavorite
-      setCachedWord({ [word]: cache[word] })
+    const cookie = makeCookieAdapter()
+    const cache = cookie.get('cache-words')
+    const favorite = cookie.get('favorite-words')
+    if (cache) {
+      const words: DictionaryCache = JSON.parse(cache)
+      words[word].isFavorite = !words[word].isFavorite
+      setCachedWord({ [word]: words[word] })
+
+      if (favorite) {
+        const favorites: DictionaryCache = JSON.parse(favorite)
+
+        if (words[word].isFavorite) {
+          favorites[word] = words[word]
+          cookie.set('favorite-words', favorites)
+        } else {
+          delete favorites[word]
+          cookie.set('favorite-words', favorites)
+        }
+      } else {
+        cookie.set('favorite-words', { [word]: words[word] })
+      }
     }
   }
 
