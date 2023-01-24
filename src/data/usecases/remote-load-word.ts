@@ -13,7 +13,7 @@ export class RemoteLoadWord implements LoadEnglishWord {
     private readonly httpGetClient: HttpGetClient<LoadEnglishWordModel[]>
   ) {}
 
-  async requestWord(): Promise<void> {
+  async requestWord(): Promise<DictionaryCache> {
     const httpResponse = await this.httpGetClient.get(this.url)
 
     const dictionary = httpResponse.body || []
@@ -44,7 +44,7 @@ export class RemoteLoadWord implements LoadEnglishWord {
       const definitionMeanings = meaningsReduced
 
       const normalized: DictionaryCache = {
-        word: {
+        [word]: {
           word,
           isFavorite,
           textPhonetics,
@@ -53,9 +53,9 @@ export class RemoteLoadWord implements LoadEnglishWord {
         },
       }
 
-      return console.log(normalized)
+      return normalized
     }
 
-    // return httpResponse.body
+    return {}
   }
 }

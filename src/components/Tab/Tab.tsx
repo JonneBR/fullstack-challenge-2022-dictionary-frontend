@@ -8,7 +8,6 @@ import cacheStructure from '../../../src/mocks/cache-structure.json'
 import cacheFavorites from '../../../src/mocks/favorite-words.json'
 import { usePlayer } from '../../contexts/PlayerContext'
 import { DictionaryCache } from '../../data/models/dictionary-cache'
-import { makeRemoteLoadWord } from '../../main/factories/usecases/remote-load-word-factory'
 import CachedList from '../CachedList/CachedList'
 import WordList from '../WordList/WordList'
 
@@ -19,7 +18,6 @@ export default function Tab() {
   const favoriteWords: DictionaryCache = cacheFavorites
 
   const onClickWord = async (word: string) => {
-    await makeRemoteLoadWord(word).requestWord()
     setWord(word)
   }
   return (

@@ -4,6 +4,7 @@ import styles from '../../../styles/Home.module.css'
 import { usePlayer } from '../../contexts/PlayerContext'
 import { DictionaryCache } from '../../data/models/dictionary-cache'
 import { DictionaryPhoneticModel } from '../../data/models/dictionary-phonetic'
+import { makeRemoteLoadWord } from '../../main/factories/usecases/remote-load-word-factory'
 import cacheStructure from '../../mocks/cache-structure.json'
 import DictionaryMeanings from '../DictionaryMeanings/DictionaryMeanings'
 import DictionaryPhonetic from '../DictionaryPhonetic/DictionaryPhonetic'
@@ -25,7 +26,7 @@ export default function Dictionary() {
   useEffect(() => {
     setLoading(true)
 
-    setTimeout(() => {
+    setTimeout(async () => {
       const wordCached = mockCacheStructure[currentWord]
       if (wordCached) {
         setPhoneticData({
@@ -37,6 +38,10 @@ export default function Dictionary() {
         setDefinitions(wordCached.definitionMeanings)
 
         setLoading(false)
+      } else {
+        console.log('new word')
+        const response = await makeRemoteLoadWord(currentWord).requestWord()
+        console.log('response', response)
       }
     }, 300)
   }, [currentWord])

@@ -1,5 +1,7 @@
+import { DictionaryCache } from '../../data/models/dictionary-cache'
+
 export interface LoadEnglishWord {
-  requestWord: () => Promise<void>
+  requestWord: () => Promise<DictionaryCache>
 }
 
 // export namespace LoadPlanets {
