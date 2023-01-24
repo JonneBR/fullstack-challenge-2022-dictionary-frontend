@@ -78,7 +78,6 @@ export default function DictionaryPlayer(props: Props) {
 
   return (
     <>
-      <p>{audio}</p>
       <div className={styles.progress}>
         <span>{convertDurationToTimeString(progress)}</span>
         <div className={styles.slider}>

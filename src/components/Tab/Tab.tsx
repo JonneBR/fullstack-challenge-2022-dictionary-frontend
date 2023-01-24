@@ -10,7 +10,6 @@ import WordList from '../WordList/WordList'
 
 export default function Tab() {
   const { setWord, getCachedWords, getFavoriteWords } = usePlayer()
-  // const favoriteWords: DictionaryCache = cacheStructure
 
   const onClickWord = async (word: string) => {
     setWord(word)

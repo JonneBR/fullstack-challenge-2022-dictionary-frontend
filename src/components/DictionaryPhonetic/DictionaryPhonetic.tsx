@@ -1,18 +1,15 @@
 import { StarOutlined, StarTwoTone } from '@ant-design/icons'
-import { Dispatch, SetStateAction } from 'react'
 import { DictionaryPhoneticModel } from '../../data/models/dictionary-phonetic'
 import styles from './styles.module.scss'
 
 type Props = {
   phoneticData: DictionaryPhoneticModel
   onFavorite: (word: string) => void
-  setTest: Dispatch<SetStateAction<boolean>>
 }
 
 export default function DictionaryPhonetic({
   phoneticData,
   onFavorite,
-  setTest,
 }: Props): JSX.Element {
   const { word, isFavorite, textPhonetics } = phoneticData
 
@@ -31,7 +28,6 @@ export default function DictionaryPhonetic({
 
   const onClickFavorite = () => {
     onFavorite(word)
-    // setTest((prev) => !prev)
   }
 
   return (

@@ -11,6 +11,7 @@ type PlayerContextData = {
   getFavoriteWords: () => DictionaryCache | undefined
   nextWord: () => void
   previousWord: () => void
+  favoriteWordsQuantity: number
 }
 
 export const PlayerContext = createContext({} as PlayerContextData)
@@ -26,7 +27,7 @@ export function PlayerContextProvider({
   const [favoriteWords, setFavoriteWords] = useState<{ [key: string]: number }>(
     {}
   )
-
+  const favoriteWordsQuantity: number = Object.keys(favoriteWords).length
   const cookie = makeCookieAdapter()
 
   function setWord(word: string) {
@@ -44,7 +45,6 @@ export function PlayerContextProvider({
     if (favorites) return JSON.parse(favorites)
     return undefined
   }
-  console.log('favoriteWords', favoriteWords)
 
   function setCachedWordFavorite(word: string) {
     const cookie = makeCookieAdapter()
@@ -57,21 +57,24 @@ export function PlayerContextProvider({
 
       if (favorite) {
         const favorites: DictionaryCache = JSON.parse(favorite)
+        const obj = favoriteWords
 
         if (words[word].isFavorite) {
           favorites[word] = words[word]
+          obj[word] = 1
+          setFavoriteWords({ ...obj })
           cookie.set('favorite-words', favorites)
         } else {
           delete favorites[word]
+          delete obj[word]
+          setFavoriteWords({ ...obj })
           cookie.set('favorite-words', favorites)
         }
       } else {
         cookie.set('favorite-words', { [word]: words[word] })
       }
     }
-    const obj = favoriteWords
-    obj[word] = 1
-    setFavoriteWords({ ...obj })
+
     // const arr = [...favoriteWords]
     // arr.push(word)
     // setFavoriteWords(arr)
@@ -133,6 +136,7 @@ export function PlayerContextProvider({
         getFavoriteWords,
         nextWord,
         previousWord,
+        favoriteWordsQuantity,
       }}
     >
       {children}
