@@ -9,10 +9,11 @@ type Props = {
   audio: string
   audioData: DictionaryCache
   playNextAudio: () => void
+  playPreviousAudio: () => void
 }
 
 export default function DictionaryPlayer(props: Props) {
-  const { audio, audioData, playNextAudio } = props
+  const { audio, audioData, playNextAudio, playPreviousAudio } = props
 
   const audioRef = useRef<HTMLAudioElement>(null)
   const [progress, setProgress] = useState(0)
@@ -68,13 +69,14 @@ export default function DictionaryPlayer(props: Props) {
   }
 
   function playPrevious() {
-    console.log(audioData)
-    const wordsArray = Object.keys(audioData)
-    const indexFather = wordsArray.indexOf('father')
-    const previousIndex = wordsArray[indexFather - 1]
-    if (previousIndex !== undefined) {
-      console.log(audioData[previousIndex].firstAudio)
-    }
+    // console.log(audioData)
+    // const wordsArray = Object.keys(audioData)
+    // const indexFather = wordsArray.indexOf('father')
+    // const previousIndex = wordsArray[indexFather - 1]
+    // if (previousIndex !== undefined) {
+    //   console.log(audioData[previousIndex].firstAudio)
+    // }
+    playPreviousAudio()
   }
 
   function playNext() {

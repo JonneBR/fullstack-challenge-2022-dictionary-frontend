@@ -10,6 +10,7 @@ type PlayerContextData = {
   setCachedWordFavorite: (word: string) => void
   getFavoriteWords: () => DictionaryCache | undefined
   nextWord: () => void
+  previousWord: () => void
 }
 
 export const PlayerContext = createContext({} as PlayerContextData)
@@ -92,6 +93,25 @@ export function PlayerContextProvider({
     }
   }
 
+  function previousWord() {
+    const cache = getCachedWords()
+    if (cache) {
+      const keysArr = Object.keys(cache)
+      const indexCurrent = keysArr.indexOf(currentWord)
+      const previousWord = keysArr[indexCurrent - 1]
+
+      if (previousWord) {
+        console.log('if', keysArr[indexCurrent - 1])
+
+        setWord(keysArr[indexCurrent - 1])
+      } else {
+        console.log('else', keysArr[keysArr.length - 1])
+
+        setWord(keysArr[keysArr.length - 1])
+      }
+    }
+  }
+
   return (
     <PlayerContext.Provider
       value={{
@@ -102,6 +122,7 @@ export function PlayerContextProvider({
         setCachedWordFavorite,
         getFavoriteWords,
         nextWord,
+        previousWord,
       }}
     >
       {children}

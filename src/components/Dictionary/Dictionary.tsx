@@ -19,6 +19,7 @@ export default function Dictionary() {
     setCachedWord,
     setCachedWordFavorite,
     nextWord,
+    previousWord,
   } = usePlayer()
   const [phoneticData, setPhoneticData] = useState<DictionaryPhoneticModel>({
     word: '',
@@ -67,6 +68,7 @@ export default function Dictionary() {
             audio={audio}
             audioData={mockCacheStructure}
             playNextAudio={nextWord}
+            playPreviousAudio={previousWord}
           />
         </main>
         <footer>

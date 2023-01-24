@@ -15,8 +15,6 @@ export default function CachedList(props: Props) {
     onClickWord(word)
   }
 
-  console.log('words', words)
-
   return (
     <Row>
       {words

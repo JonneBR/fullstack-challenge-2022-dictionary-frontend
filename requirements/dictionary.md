@@ -5,10 +5,12 @@
 > ## Success Case
 
 1. 🔲 Como usuário, devo ser capaz de visualizar uma lista de palavras com rolagem infinita
-1. ✅ Como usuário, devo ser capaz de visualizar uma **palavra**, **significados** e a **fonética**
-1. 🔲 Como usuário, devo ser capaz de **salvar** a palavra como favorito
-1. 🔲 Como usuário, devo ser capaz de **remover** a palavra como favorito
-1. ✅ Como usuário, devo ser capaz de **visitar** uma lista com as palavras que já vi anteriormente
+2. ✅ Como usuário, devo ser capaz de visualizar uma **palavra**, **significados** e a **fonética**
+3. 🔲 Como usuário, devo ser capaz de **salvar** a palavra como favorito
+4. 🔲 Como usuário, devo ser capaz de **remover** a palavra como favorito
+5. ✅ Como usuário, devo ser capaz de **visitar** uma lista com as palavras que já vi anteriormente
+6. ✅ Play next word. If it doesn't exists play the first one or itself
+7. ✅ Play previous word. If it doesn't exists play the last one or itself
 
 > ## Usecases
 
