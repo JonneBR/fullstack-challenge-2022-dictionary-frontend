@@ -6,5 +6,5 @@
 
 > ## Success Case
 
-1. 🔲 The history should save clicked word
-2. 🔲 The history cannot save the same word already clicked
+1. ✅ Should save clicked word
+2. ✅ Cannot save the same word already clicked
