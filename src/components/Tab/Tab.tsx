@@ -14,13 +14,12 @@ import WordList from '../WordList/WordList'
 export default function Tab() {
   const { currentWord, setWord, getCachedWords } = usePlayer()
   const [cachedWords, setCachedWords] = useState<DictionaryCache | object>({})
-  // const cachedWords: DictionaryCache | object = getCachedWords()
   const favoriteWords: DictionaryCache = cacheStructure
 
   useEffect(() => {
     setCachedWords(getCachedWords())
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentWord])
+  }, [])
 
   const onClickWord = async (word: string) => {
     setWord(word)

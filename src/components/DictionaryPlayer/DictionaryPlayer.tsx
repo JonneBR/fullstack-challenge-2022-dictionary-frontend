@@ -63,7 +63,6 @@ export default function DictionaryPlayer(props: Props) {
   }
 
   function handleSeek(amount: number) {
-    // audioRef.current.currentTime = amount;
     setProgress(amount)
   }
 
@@ -87,7 +86,7 @@ export default function DictionaryPlayer(props: Props) {
             max={1}
             value={progress}
             onChange={handleSeek}
-            disabled={false}
+            disabled={true}
           />
         </div>
         <audio
@@ -117,7 +116,7 @@ export default function DictionaryPlayer(props: Props) {
         </button>
         <button
           type='button'
-          // disabled={!episode}
+          disabled={!audio}
           className={styles.playButton}
           onClick={togglePlay}
         >
