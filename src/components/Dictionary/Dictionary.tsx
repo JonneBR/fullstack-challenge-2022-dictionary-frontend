@@ -29,6 +29,7 @@ export default function Dictionary() {
   const [audio, setAudio] = useState<string>('')
   const [definitions, setDefinitions] = useState<string[]>([])
   const [loading, setLoading] = useState<boolean>(false)
+  const [teste, setTest] = useState<boolean>(false)
 
   useEffect(() => {
     setLoading(true)
@@ -52,7 +53,7 @@ export default function Dictionary() {
       setLoading(false)
     }, 300)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentWord])
+  }, [currentWord, teste])
 
   return (
     <section className={styles['container-wrapper']}>
@@ -61,6 +62,7 @@ export default function Dictionary() {
           <DictionaryPhonetic
             phoneticData={phoneticData}
             onFavorite={setCachedWordFavorite}
+            setTest={setTest}
           />
         </header>
         <main>
