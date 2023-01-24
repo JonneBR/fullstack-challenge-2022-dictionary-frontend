@@ -23,7 +23,9 @@ export function PlayerContextProvider({
   children,
 }: PlayerContextProviderProps) {
   const [currentWord, setCurrentWord] = useState<string>('hello')
-  const [test, setTest] = useState<boolean>(false)
+  const [favoriteWords, setFavoriteWords] = useState<{ [key: string]: number }>(
+    {}
+  )
 
   const cookie = makeCookieAdapter()
 
@@ -42,6 +44,7 @@ export function PlayerContextProvider({
     if (favorites) return JSON.parse(favorites)
     return undefined
   }
+  console.log('favoriteWords', favoriteWords)
 
   function setCachedWordFavorite(word: string) {
     const cookie = makeCookieAdapter()
@@ -66,7 +69,12 @@ export function PlayerContextProvider({
         cookie.set('favorite-words', { [word]: words[word] })
       }
     }
-    setTest((prev) => !prev)
+    const obj = favoriteWords
+    obj[word] = 1
+    setFavoriteWords({ ...obj })
+    // const arr = [...favoriteWords]
+    // arr.push(word)
+    // setFavoriteWords(arr)
   }
 
   function setCachedWord(word: DictionaryCache) {

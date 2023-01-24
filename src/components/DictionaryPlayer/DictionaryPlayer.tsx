@@ -69,13 +69,6 @@ export default function DictionaryPlayer(props: Props) {
   }
 
   function playPrevious() {
-    // console.log(audioData)
-    // const wordsArray = Object.keys(audioData)
-    // const indexFather = wordsArray.indexOf('father')
-    // const previousIndex = wordsArray[indexFather - 1]
-    // if (previousIndex !== undefined) {
-    //   console.log(audioData[previousIndex].firstAudio)
-    // }
     playPreviousAudio()
   }
 

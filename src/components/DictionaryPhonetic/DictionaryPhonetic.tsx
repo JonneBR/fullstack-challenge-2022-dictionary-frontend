@@ -31,7 +31,7 @@ export default function DictionaryPhonetic({
 
   const onClickFavorite = () => {
     onFavorite(word)
-    setTest((prev) => !prev)
+    // setTest((prev) => !prev)
   }
 
   return (
