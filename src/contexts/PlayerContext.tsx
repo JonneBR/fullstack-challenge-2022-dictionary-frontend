@@ -50,6 +50,7 @@ export function PlayerContextProvider({
     const cookie = makeCookieAdapter()
     const cache = cookie.get('cache-words')
     const favorite = cookie.get('favorite-words')
+    const obj = favoriteWords
     if (cache) {
       const words: DictionaryCache = JSON.parse(cache)
       words[word].isFavorite = !words[word].isFavorite
@@ -57,7 +58,6 @@ export function PlayerContextProvider({
 
       if (favorite) {
         const favorites: DictionaryCache = JSON.parse(favorite)
-        const obj = favoriteWords
 
         if (words[word].isFavorite) {
           favorites[word] = words[word]
@@ -71,6 +71,9 @@ export function PlayerContextProvider({
           cookie.set('favorite-words', favorites)
         }
       } else {
+        console.log('else')
+        obj[word] = 1
+        setFavoriteWords({ ...obj })
         cookie.set('favorite-words', { [word]: words[word] })
       }
     }
