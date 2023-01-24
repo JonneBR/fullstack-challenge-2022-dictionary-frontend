@@ -17,8 +17,8 @@ export default function DictionaryPhonetic({
   const Photenics = () => {
     return (
       <>
-        {textPhonetics.map((text) => {
-          return <h3 key={text}>{text}</h3>
+        {textPhonetics.map((text, index) => {
+          return <h3 key={index}>{text}</h3>
         })}
       </>
     )

@@ -3,12 +3,13 @@ import styles from '../../../styles/grid-list/styles.module.scss'
 import { DictionaryCache } from '../../data/models/dictionary-cache'
 
 type Props = {
-  words: DictionaryCache
+  words: DictionaryCache | object
   onClickWord: (word: string) => void
 }
 
 export default function CachedList(props: Props) {
   const { words, onClickWord } = props
+  console.log('WORDS', words)
 
   const onSelect = (word: string) => {
     onClickWord(word)

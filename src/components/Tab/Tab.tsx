@@ -5,17 +5,23 @@ import {
 } from '@ant-design/icons'
 import { Badge, Tabs } from 'antd'
 import cacheStructure from '../../../src/mocks/cache-structure.json'
-import cacheFavorites from '../../../src/mocks/favorite-words.json'
 import { usePlayer } from '../../contexts/PlayerContext'
 import { DictionaryCache } from '../../data/models/dictionary-cache'
 import CachedList from '../CachedList/CachedList'
 import WordList from '../WordList/WordList'
 
 export default function Tab() {
-  const { setWord } = usePlayer()
+  const { setWord, getCachedWords } = usePlayer()
 
-  const cachedWords: DictionaryCache = cacheStructure
-  const favoriteWords: DictionaryCache = cacheFavorites
+  const cachedWords: DictionaryCache | object = getCachedWords()
+  const favoriteWords: DictionaryCache = cacheStructure
+
+  // useEffect(() => {
+  //   const cache = getCachedWords()
+  //   if (cache) {
+  //     setCachedWords(JSON.parse(cache))
+  //   }
+  // }, [])
 
   const onClickWord = async (word: string) => {
     setWord(word)

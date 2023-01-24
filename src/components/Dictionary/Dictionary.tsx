@@ -13,7 +13,7 @@ import DictionaryPlayer from '../DictionaryPlayer/DictionaryPlayer'
 const mockCacheStructure: DictionaryCache = cacheStructure
 
 export default function Dictionary() {
-  const { currentWord, getCachedWords } = usePlayer()
+  const { currentWord, getCachedWords, setCachedWord } = usePlayer()
   const [phoneticData, setPhoneticData] = useState<DictionaryPhoneticModel>({
     word: '',
     isFavorite: false,
@@ -26,22 +26,16 @@ export default function Dictionary() {
   useEffect(() => {
     setLoading(true)
     setTimeout(async () => {
-      const wordCached = mockCacheStructure[currentWord]
-      if (wordCached) {
-        setPhoneticData({
-          word: wordCached.word,
-          isFavorite: wordCached.isFavorite,
-          textPhonetics: wordCached.textPhonetics,
-        })
-        setAudio(wordCached.firstAudio)
-        setDefinitions(wordCached.definitionMeanings)
-
-        setLoading(false)
-      } else {
-        console.log('new word')
-        const response = await makeRemoteLoadWord(currentWord).requestWord()
-        console.log('response', response)
-      }
+      const response = await makeRemoteLoadWord(currentWord).requestWord()
+      setCachedWord(response)
+      setPhoneticData({
+        word: response[currentWord].word,
+        isFavorite: response[currentWord].isFavorite,
+        textPhonetics: response[currentWord].textPhonetics,
+      })
+      setAudio(response[currentWord].firstAudio)
+      setDefinitions(response[currentWord].definitionMeanings)
+      setLoading(false)
     }, 300)
   }, [currentWord])
 
