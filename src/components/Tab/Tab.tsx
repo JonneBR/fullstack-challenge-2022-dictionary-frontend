@@ -4,15 +4,13 @@ import {
   UnorderedListOutlined,
 } from '@ant-design/icons'
 import { Badge, Tabs } from 'antd'
-import cacheStructure from '../../../src/mocks/cache-structure.json'
 import { usePlayer } from '../../contexts/PlayerContext'
-import { DictionaryCache } from '../../data/models/dictionary-cache'
 import CachedList from '../CachedList/CachedList'
 import WordList from '../WordList/WordList'
 
 export default function Tab() {
-  const { setWord, getCachedWords } = usePlayer()
-  const favoriteWords: DictionaryCache = cacheStructure
+  const { setWord, getCachedWords, getFavoriteWords } = usePlayer()
+  // const favoriteWords: DictionaryCache = cacheStructure
 
   const onClickWord = async (word: string) => {
     setWord(word)
@@ -41,7 +39,7 @@ export default function Tab() {
           ),
           key: '2',
           children: (
-            <CachedList words={favoriteWords} onClickWord={onClickWord} />
+            <CachedList words={getFavoriteWords()} onClickWord={onClickWord} />
           ),
         },
         {

@@ -8,6 +8,7 @@ type PlayerContextData = {
   getCachedWords: () => DictionaryCache | object
   setCachedWord: (word: DictionaryCache) => void
   setCachedWordFavorite: (word: string) => void
+  getFavoriteWords: () => DictionaryCache | undefined
 }
 
 export const PlayerContext = createContext({} as PlayerContextData)
@@ -31,6 +32,12 @@ export function PlayerContextProvider({
     const cache = cookie.get('cache-words')
     if (cache) return JSON.parse(cache)
     return {}
+  }
+
+  function getFavoriteWords(): DictionaryCache | undefined {
+    const favorites = cookie.get('favorite-words')
+    if (favorites) return JSON.parse(favorites)
+    return undefined
   }
 
   function setCachedWordFavorite(word: string) {
@@ -78,6 +85,7 @@ export function PlayerContextProvider({
         getCachedWords,
         setCachedWord,
         setCachedWordFavorite,
+        getFavoriteWords,
       }}
     >
       {children}
