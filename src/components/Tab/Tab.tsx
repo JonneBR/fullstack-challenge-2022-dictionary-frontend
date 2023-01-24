@@ -4,7 +4,6 @@ import {
   UnorderedListOutlined,
 } from '@ant-design/icons'
 import { Badge, Tabs } from 'antd'
-import { useEffect, useState } from 'react'
 import cacheStructure from '../../../src/mocks/cache-structure.json'
 import { usePlayer } from '../../contexts/PlayerContext'
 import { DictionaryCache } from '../../data/models/dictionary-cache'
@@ -12,14 +11,8 @@ import CachedList from '../CachedList/CachedList'
 import WordList from '../WordList/WordList'
 
 export default function Tab() {
-  const { currentWord, setWord, getCachedWords } = usePlayer()
-  const [cachedWords, setCachedWords] = useState<DictionaryCache | object>({})
+  const { setWord, getCachedWords } = usePlayer()
   const favoriteWords: DictionaryCache = cacheStructure
-
-  useEffect(() => {
-    setCachedWords(getCachedWords())
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   const onClickWord = async (word: string) => {
     setWord(word)
@@ -60,7 +53,7 @@ export default function Tab() {
           ),
           key: '3',
           children: (
-            <CachedList words={cachedWords} onClickWord={onClickWord} />
+            <CachedList words={getCachedWords()} onClickWord={onClickWord} />
           ),
         },
       ]}

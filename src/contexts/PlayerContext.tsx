@@ -2,21 +2,6 @@ import { createContext, ReactNode, useContext, useState } from 'react'
 import { DictionaryCache } from '../data/models/dictionary-cache'
 import { makeCookieAdapter } from '../main/factories/cache'
 
-// type PlayerContextData = {
-//   wordList: string[]
-//   currentWordIndex: number
-//   isPlaying: boolean
-//   play: (word: string) => void
-//   playNext: () => void
-//   playPrevious: () => void
-//   playList: (list: string[], index: number) => void
-//   togglePlay: () => void
-//   clearPlayerState: () => void
-//   hasNext: boolean
-//   hasPrevious: boolean
-//   setPlayingState: (state: boolean) => void
-// }
-
 type PlayerContextData = {
   currentWord: string
   setWord: (word: string) => void
@@ -47,7 +32,7 @@ export function PlayerContextProvider({
     return {}
   }
 
-  function setCachedWord(word: any) {
+  function setCachedWord(word: DictionaryCache) {
     const cache = cookie.get('cache-words')
     const key = Object.keys(word)[0]
     if (cache) {
