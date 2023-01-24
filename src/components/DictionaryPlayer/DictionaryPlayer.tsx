@@ -1,36 +1,21 @@
 import { Slider } from 'antd'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import { DictionaryCache } from '../../data/models/dictionary-cache'
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString'
 import styles from './styles.module.scss'
 
 type Props = {
   audio: string
-  audioData: DictionaryCache
   playNextAudio: () => void
   playPreviousAudio: () => void
 }
 
 export default function DictionaryPlayer(props: Props) {
-  const { audio, audioData, playNextAudio, playPreviousAudio } = props
+  const { audio, playNextAudio, playPreviousAudio } = props
 
   const audioRef = useRef<HTMLAudioElement>(null)
   const [progress, setProgress] = useState(0)
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
-
-  const hasNext = false
-  // const hasPrevious = true
-
-  // useEffect(() => {
-  //   const audioInstance = new Audio(audio)
-  //   audioInstance.addEventListener('loadedmetadata', (e) => {
-  //     if (e.target !== null) {
-  //       const duration = (e.target as HTMLAudioElement).duration
-  //       durationRef.current = duration
-  //     }
-  //   })
-  // }, [audio])
 
   useEffect(() => {
     if (!audioRef.current) {
@@ -64,10 +49,6 @@ export default function DictionaryPlayer(props: Props) {
     setIsPlaying(false)
   }
 
-  function handleSeek(amount: number) {
-    setProgress(amount)
-  }
-
   function playPrevious() {
     playPreviousAudio()
   }
@@ -81,12 +62,7 @@ export default function DictionaryPlayer(props: Props) {
       <div className={styles.progress}>
         <span>{convertDurationToTimeString(progress)}</span>
         <div className={styles.slider}>
-          <Slider
-            max={1}
-            value={progress}
-            onChange={handleSeek}
-            disabled={true}
-          />
+          <Slider max={1} value={progress} disabled={true} />
         </div>
         <audio
           src={audio}

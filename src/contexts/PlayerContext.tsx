@@ -74,10 +74,6 @@ export function PlayerContextProvider({
         cookie.set('favorite-words', { [word]: words[word] })
       }
     }
-
-    // const arr = [...favoriteWords]
-    // arr.push(word)
-    // setFavoriteWords(arr)
   }
 
   function setCachedWord(word: DictionaryCache) {
@@ -98,11 +94,8 @@ export function PlayerContextProvider({
       const keysArr = Object.keys(cache)
       const indexCurrent = keysArr.indexOf(currentWord)
       const nextWord = keysArr[indexCurrent + 1]
-      if (nextWord) {
-        setWord(keysArr[indexCurrent + 1])
-      } else {
-        setWord(keysArr[0])
-      }
+      if (nextWord) return setWord(keysArr[indexCurrent + 1])
+      return setWord(keysArr[0])
     }
   }
 
@@ -113,15 +106,8 @@ export function PlayerContextProvider({
       const indexCurrent = keysArr.indexOf(currentWord)
       const previousWord = keysArr[indexCurrent - 1]
 
-      if (previousWord) {
-        console.log('if', keysArr[indexCurrent - 1])
-
-        setWord(keysArr[indexCurrent - 1])
-      } else {
-        console.log('else', keysArr[keysArr.length - 1])
-
-        setWord(keysArr[keysArr.length - 1])
-      }
+      if (previousWord) return setWord(keysArr[indexCurrent - 1])
+      return setWord(keysArr[keysArr.length - 1])
     }
   }
 

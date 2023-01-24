@@ -5,12 +5,9 @@ import { usePlayer } from '../../contexts/PlayerContext'
 import { DictionaryCache } from '../../data/models/dictionary-cache'
 import { DictionaryPhoneticModel } from '../../data/models/dictionary-phonetic'
 import { makeRemoteLoadWord } from '../../main/factories/usecases/remote-load-word-factory'
-import cacheStructure from '../../mocks/cache-structure.json'
 import DictionaryMeanings from '../DictionaryMeanings/DictionaryMeanings'
 import DictionaryPhonetic from '../DictionaryPhonetic/DictionaryPhonetic'
 import DictionaryPlayer from '../DictionaryPlayer/DictionaryPlayer'
-
-const mockCacheStructure: DictionaryCache = cacheStructure
 
 export default function Dictionary() {
   const {
@@ -22,6 +19,7 @@ export default function Dictionary() {
     previousWord,
     favoriteWordsQuantity,
   } = usePlayer()
+
   const [phoneticData, setPhoneticData] = useState<DictionaryPhoneticModel>({
     word: '',
     isFavorite: false,
@@ -67,7 +65,6 @@ export default function Dictionary() {
         <main>
           <DictionaryPlayer
             audio={audio}
-            audioData={mockCacheStructure}
             playNextAudio={nextWord}
             playPreviousAudio={previousWord}
           />
