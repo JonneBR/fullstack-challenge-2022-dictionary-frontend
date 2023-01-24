@@ -9,8 +9,7 @@ type Props = {
 
 export default function CachedList(props: Props) {
   const { words, onClickWord } = props
-  console.log('WORDS', words)
-
+  console.log('CachedList', words)
   const onSelect = (word: string) => {
     onClickWord(word)
   }

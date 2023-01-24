@@ -26,17 +26,25 @@ export default function Dictionary() {
   useEffect(() => {
     setLoading(true)
     setTimeout(async () => {
-      const response = await makeRemoteLoadWord(currentWord).requestWord()
-      setCachedWord(response)
+      const cache = getCachedWords()
+      let dictionary: DictionaryCache = {}
+      if (cache[currentWord as keyof typeof cache]) {
+        dictionary = cache as keyof typeof cache
+      } else {
+        const response = await makeRemoteLoadWord(currentWord).requestWord()
+        setCachedWord(response)
+        dictionary = response
+      }
       setPhoneticData({
-        word: response[currentWord].word,
-        isFavorite: response[currentWord].isFavorite,
-        textPhonetics: response[currentWord].textPhonetics,
+        word: dictionary[currentWord].word,
+        isFavorite: dictionary[currentWord].isFavorite,
+        textPhonetics: dictionary[currentWord].textPhonetics,
       })
-      setAudio(response[currentWord].firstAudio)
-      setDefinitions(response[currentWord].definitionMeanings)
+      setAudio(dictionary[currentWord].firstAudio)
+      setDefinitions(dictionary[currentWord].definitionMeanings)
       setLoading(false)
     }, 300)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentWord])
 
   return (

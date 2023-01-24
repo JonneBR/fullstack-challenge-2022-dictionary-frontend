@@ -52,7 +52,7 @@ export function PlayerContextProvider({
     const key = Object.keys(word)[0]
     if (cache) {
       const words = JSON.parse(cache)
-      words[currentWord] = word[key]
+      words[key] = word[key]
       cookie.set('cache-words', words)
     } else {
       cookie.set('cache-words', word)

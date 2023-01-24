@@ -22,7 +22,7 @@ export class RemoteLoadWord implements LoadEnglishWord {
       const phoneticsReduced = firstOccurence.phonetics.reduce<Phonetics>(
         (acc: Phonetics, curr) => {
           if (curr.text) acc['textPhonetics'].push(curr.text)
-          if (curr.text) acc['firstAudio'] = curr.audio || ''
+          if (curr.audio) acc['firstAudio'] = curr.audio || ''
           return acc
         },
         {
