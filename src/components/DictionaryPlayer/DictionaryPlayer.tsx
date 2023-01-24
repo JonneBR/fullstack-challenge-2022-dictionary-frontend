@@ -8,10 +8,11 @@ import styles from './styles.module.scss'
 type Props = {
   audio: string
   audioData: DictionaryCache
+  playNextAudio: () => void
 }
 
 export default function DictionaryPlayer(props: Props) {
-  const { audio, audioData } = props
+  const { audio, audioData, playNextAudio } = props
 
   const audioRef = useRef<HTMLAudioElement>(null)
   const [progress, setProgress] = useState(0)
@@ -76,6 +77,10 @@ export default function DictionaryPlayer(props: Props) {
     }
   }
 
+  function playNext() {
+    playNextAudio()
+  }
+
   return (
     <>
       <p>{audio}</p>
@@ -128,9 +133,9 @@ export default function DictionaryPlayer(props: Props) {
         </button>
         <button
           type='button'
-          // onClick={playNext}
+          onClick={playNext}
           // disabled={!episode || !hasNext}
-          disabled={!hasNext}
+          // disabled={!hasNext}
         >
           <Image
             src='/svg/play-next.svg'
