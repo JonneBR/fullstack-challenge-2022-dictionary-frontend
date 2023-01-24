@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from 'react'
+import { makeCookieAdapter } from '../main/factories/cache'
 
 // type PlayerContextData = {
 //   wordList: string[]
@@ -18,6 +19,7 @@ import { createContext, ReactNode, useContext, useState } from 'react'
 type PlayerContextData = {
   currentWord: string
   setWord: (word: string) => void
+  getCachedWords: () => string | undefined
 }
 
 export const PlayerContext = createContext({} as PlayerContextData)
@@ -35,8 +37,13 @@ export function PlayerContextProvider({
     setCurrentWord(word)
   }
 
+  function getCachedWords() {
+    const cookie = makeCookieAdapter()
+    return cookie.get('cache-words')
+  }
+
   return (
-    <PlayerContext.Provider value={{ currentWord, setWord }}>
+    <PlayerContext.Provider value={{ currentWord, setWord, getCachedWords }}>
       {children}
     </PlayerContext.Provider>
   )

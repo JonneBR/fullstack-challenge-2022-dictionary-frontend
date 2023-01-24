@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 import { GetCookie, SetCookie } from '../../data/protocols/cache'
-import { RemoveCookie } from '../../data/protocols/cache/remote-cookie'
+import { RemoveCookie } from '../../data/protocols/cache/remove-cookie'
 
 export class CookieAdapter implements GetCookie, SetCookie, RemoveCookie {
   get(key: string): string | undefined {

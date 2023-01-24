@@ -13,7 +13,7 @@ import DictionaryPlayer from '../DictionaryPlayer/DictionaryPlayer'
 const mockCacheStructure: DictionaryCache = cacheStructure
 
 export default function Dictionary() {
-  const { currentWord } = usePlayer()
+  const { currentWord, getCachedWords } = usePlayer()
   const [phoneticData, setPhoneticData] = useState<DictionaryPhoneticModel>({
     word: '',
     isFavorite: false,
@@ -25,7 +25,6 @@ export default function Dictionary() {
 
   useEffect(() => {
     setLoading(true)
-
     setTimeout(async () => {
       const wordCached = mockCacheStructure[currentWord]
       if (wordCached) {
