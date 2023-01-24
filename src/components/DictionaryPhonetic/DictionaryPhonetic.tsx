@@ -28,7 +28,7 @@ export default function DictionaryPhonetic({
     <div className={styles['container-dictionary']}>
       <div
         className={styles['favorite-icon']}
-        // onClick={() => setIsFavorite(!isFavorite)}
+        onClick={() => console.log(!isFavorite)}
       >
         <Icon />
       </div>
