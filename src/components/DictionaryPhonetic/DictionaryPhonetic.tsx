@@ -4,10 +4,12 @@ import styles from './styles.module.scss'
 
 type Props = {
   phoneticData: DictionaryPhoneticModel
+  onFavorite: (word: string) => void
 }
 
 export default function DictionaryPhonetic({
   phoneticData,
+  onFavorite,
 }: Props): JSX.Element {
   const { word, isFavorite, textPhonetics } = phoneticData
 
@@ -24,12 +26,13 @@ export default function DictionaryPhonetic({
     )
   }
 
+  const onClickFavorite = () => {
+    onFavorite(word)
+  }
+
   return (
     <div className={styles['container-dictionary']}>
-      <div
-        className={styles['favorite-icon']}
-        onClick={() => console.log(!isFavorite)}
-      >
+      <div className={styles['favorite-icon']} onClick={onClickFavorite}>
         <Icon />
       </div>
       <h2>{word}</h2>
