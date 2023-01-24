@@ -29,8 +29,8 @@ export default function Dictionary() {
     setTimeout(async () => {
       const cache = getCachedWords()
       let dictionary: DictionaryCache = {}
-      if (cache[currentWord as keyof typeof cache]) {
-        dictionary = cache as keyof typeof cache
+      if (cache && cache[currentWord]) {
+        dictionary = cache
       } else {
         const response = await makeRemoteLoadWord(currentWord).requestWord()
         setCachedWord(response)

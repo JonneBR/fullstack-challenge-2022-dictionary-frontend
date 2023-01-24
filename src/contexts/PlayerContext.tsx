@@ -5,7 +5,7 @@ import { makeCookieAdapter } from '../main/factories/cache'
 type PlayerContextData = {
   currentWord: string
   setWord: (word: string) => void
-  getCachedWords: () => DictionaryCache | object
+  getCachedWords: () => DictionaryCache | undefined
   setCachedWord: (word: DictionaryCache) => void
   setCachedWordFavorite: (word: string) => void
   getFavoriteWords: () => DictionaryCache | undefined
@@ -28,10 +28,10 @@ export function PlayerContextProvider({
     setCurrentWord(word)
   }
 
-  function getCachedWords(): DictionaryCache | object {
+  function getCachedWords(): DictionaryCache | undefined {
     const cache = cookie.get('cache-words')
     if (cache) return JSON.parse(cache)
-    return {}
+    return undefined
   }
 
   function getFavoriteWords(): DictionaryCache | undefined {
