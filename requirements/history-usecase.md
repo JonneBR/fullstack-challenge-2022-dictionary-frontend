@@ -2,7 +2,7 @@
 
 > ## Brainstorming
 
-1. If user clicks in a word the context should push that word to the history array
+1. If user clicks in a word the context should add that word to the history object
 
 > ## Success Case
 

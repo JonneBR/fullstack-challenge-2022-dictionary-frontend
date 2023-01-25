@@ -44,15 +44,25 @@ Backend - [Fullstack Challenge 🏅 2022 - Dictionary - Backend](https://github.
 
 ![alt clean architecture](/public/img/clean-architecture.png)
 
+## Usecases
+
+- remote-load-word
+
+![alt clean architecture](/public/img/load-english-word-diagram.PNG)
+
+- cookie-adapter
+
+![alt clean architecture](/public/img/cookie-adapter-factory.PNG)
+
 > ## Project Objectives
 
 **First**
 
-- Como usuário, devo ser capaz de visualizar uma lista de palavras com rolagem infinita
-- Como usuário, devo ser capaz de visualizar uma palavra, significados e a fonética
-- Como usuário, devo ser capaz de salvar a palavra como favorito
-- Como usuário, devo ser capaz de remover a palavra como favorito
-- Como usuário, devo ser capaz de visitar uma lista com as palavras que já vi anteriormente
+1. ✅ Como usuário, devo ser capaz de visualizar uma lista de palavras com rolagem infinita
+2. ✅ Como usuário, devo ser capaz de visualizar uma **palavra**, **significados** e a **fonética**
+3. ✅ Como usuário, devo ser capaz de **salvar** a palavra como favorito
+4. ✅ Como usuário, devo ser capaz de **remover** a palavra como favorito
+5. ✅ Como usuário, devo ser capaz de **visitar** uma lista com as palavras que já vi anteriormente
 
 **Second**
 Obs: Seguir o wireframe para a página de listagem dos dados.
@@ -87,17 +97,12 @@ Obs: Seguir o wireframe para a página de listagem dos dados.
 
 - TDD
 - Clean Architecture
-- DDD
 - Reactive Programming
 - File-system Routing
-- SSR
 - Dynamic Routes
 - Next.js Zero Config
-- Image Optimization
 - Responsive Layout
 - Conventional Commits
-- GitFlow
-- Modular Design
 - Dependency Diagrams
 - Use Cases
 - Continuous Integration
