@@ -71,7 +71,6 @@ export function PlayerContextProvider({
           cookie.set('favorite-words', favorites)
         }
       } else {
-        console.log('else')
         obj[word] = 1
         setFavoriteWords({ ...obj })
         cookie.set('favorite-words', { [word]: words[word] })

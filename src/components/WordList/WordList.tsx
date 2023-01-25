@@ -7,7 +7,6 @@ type Props = {
 }
 export default function WordList(props: Props) {
   const { onClickWord } = props
-  // console.log(Object.keys(words).indexOf('abasgi'))
 
   return (
     <Row>
