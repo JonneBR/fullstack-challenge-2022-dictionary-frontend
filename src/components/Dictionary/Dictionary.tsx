@@ -50,12 +50,8 @@ export default function Dictionary() {
   }
 
   useEffect(() => {
-    console.log('currentWord', currentWord)
-
     setLoading(true)
     setTimeout(async () => {
-      console.log(currentWord)
-
       const cache = getCachedWords()
       let dictionary: DictionaryCache = {}
       if (cache && cache[currentWord]) {

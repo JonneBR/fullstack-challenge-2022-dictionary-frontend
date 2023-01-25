@@ -15,21 +15,6 @@ type SutTypes = {
   mockedAxios: jest.Mocked<typeof Cookies>
 }
 
-// class CookieAdapterSpy implements GetCookie, SetCookie {
-//   key?: string
-//   value?: object
-
-//   get(key: string): void {
-//     this.key = key
-//     return
-//   }
-//   set(key: string, value: object): void {
-//     this.key = key
-//     this.value = value
-//     return
-//   }
-// }
-
 const makeSut = (): SutTypes => {
   const sut = new CookieAdapter()
   const mockedAxios = mockCookies()
