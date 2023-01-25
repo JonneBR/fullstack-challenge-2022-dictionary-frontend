@@ -1,4 +1,4 @@
-import { Spin } from 'antd'
+import { notification, Spin } from 'antd'
 import { useEffect, useState } from 'react'
 import styles from '../../../styles/Home.module.css'
 import { usePlayer } from '../../contexts/PlayerContext'
@@ -29,25 +29,40 @@ export default function Dictionary() {
   const [definitions, setDefinitions] = useState<string[]>([])
   const [loading, setLoading] = useState<boolean>(false)
 
+  function saveState(dictionary: DictionaryCache) {
+    setPhoneticData({
+      word: dictionary[currentWord].word,
+      isFavorite: dictionary[currentWord].isFavorite,
+      textPhonetics: dictionary[currentWord].textPhonetics,
+    })
+    setAudio(dictionary[currentWord].firstAudio)
+    setDefinitions(dictionary[currentWord].definitionMeanings)
+  }
+
   useEffect(() => {
+    console.log('currentWord', currentWord)
+
     setLoading(true)
     setTimeout(async () => {
       const cache = getCachedWords()
       let dictionary: DictionaryCache = {}
       if (cache && cache[currentWord]) {
         dictionary = cache
+        saveState(dictionary)
       } else {
         const response = await makeRemoteLoadWord(currentWord).requestWord()
         setCachedWord(response)
         dictionary = response
+        if (Object.keys(dictionary).length > 0) {
+          saveState(dictionary)
+        } else {
+          notification.warning({
+            message: 'No Definitions Found',
+            description:
+              'You can try the search again at later time or head to the web instead.',
+          })
+        }
       }
-      setPhoneticData({
-        word: dictionary[currentWord].word,
-        isFavorite: dictionary[currentWord].isFavorite,
-        textPhonetics: dictionary[currentWord].textPhonetics,
-      })
-      setAudio(dictionary[currentWord].firstAudio)
-      setDefinitions(dictionary[currentWord].definitionMeanings)
       setLoading(false)
     }, 300)
     // eslint-disable-next-line react-hooks/exhaustive-deps
