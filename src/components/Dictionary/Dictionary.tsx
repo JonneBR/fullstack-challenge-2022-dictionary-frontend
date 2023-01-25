@@ -54,6 +54,8 @@ export default function Dictionary() {
 
     setLoading(true)
     setTimeout(async () => {
+      console.log(currentWord)
+
       const cache = getCachedWords()
       let dictionary: DictionaryCache = {}
       if (cache && cache[currentWord]) {
@@ -61,9 +63,9 @@ export default function Dictionary() {
         saveState(dictionary)
       } else {
         const response = await makeRemoteLoadWord(currentWord).requestWord()
-        setCachedWord(response)
         dictionary = response
         if (Object.keys(dictionary).length > 0) {
+          setCachedWord(response)
           saveState(dictionary)
         } else {
           setLastWord(cache)
