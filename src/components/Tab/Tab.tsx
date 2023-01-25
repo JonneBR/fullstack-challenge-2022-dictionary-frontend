@@ -7,6 +7,7 @@ import { Badge, Tabs } from 'antd'
 import { usePlayer } from '../../contexts/PlayerContext'
 import CachedList from '../CachedList/CachedList'
 import WordList from '../WordList/WordList'
+import styles from './styles.module.scss'
 
 export default function Tab() {
   const { setWord, getCachedWords, getFavoriteWords } = usePlayer()
@@ -27,7 +28,11 @@ export default function Tab() {
             </span>
           ),
           key: '1',
-          children: <WordList onClickWord={onClickWord} />,
+          children: (
+            <div className={styles['word-list-container']}>
+              <WordList onClickWord={onClickWord} />
+            </div>
+          ),
         },
         {
           label: (
