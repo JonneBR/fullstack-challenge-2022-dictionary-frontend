@@ -3,7 +3,7 @@ import {
   StarOutlined,
   UnorderedListOutlined,
 } from '@ant-design/icons'
-import { Badge, Tabs } from 'antd'
+import { Tabs } from 'antd'
 import { usePlayer } from '../../contexts/PlayerContext'
 import CachedList from '../CachedList/CachedList'
 import WordList from '../WordList/WordList'
@@ -38,7 +38,7 @@ export default function Tab() {
           label: (
             <span>
               <StarOutlined />
-              <Badge dot={true}>Favorites</Badge>
+              Favorites
             </span>
           ),
           key: '2',

@@ -18,6 +18,7 @@ export default function Dictionary() {
     nextWord,
     previousWord,
     favoriteWordsQuantity,
+    setWord,
   } = usePlayer()
 
   const [phoneticData, setPhoneticData] = useState<DictionaryPhoneticModel>({
@@ -39,6 +40,15 @@ export default function Dictionary() {
     setDefinitions(dictionary[currentWord].definitionMeanings)
   }
 
+  function setLastWord(cache: DictionaryCache | undefined) {
+    if (cache) {
+      const keysArr = Object.keys(cache)
+      const lastWord = keysArr[keysArr.length - 1]
+      if (lastWord) return setWord(lastWord)
+      return setWord('hello')
+    }
+  }
+
   useEffect(() => {
     console.log('currentWord', currentWord)
 
@@ -56,6 +66,7 @@ export default function Dictionary() {
         if (Object.keys(dictionary).length > 0) {
           saveState(dictionary)
         } else {
+          setLastWord(cache)
           notification.warning({
             message: 'No Definitions Found',
             description:
